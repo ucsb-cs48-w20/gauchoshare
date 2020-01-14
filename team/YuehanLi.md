@@ -1,1 +1,3 @@
-//Yuehan Li, 6057186
+//Yuehan Li
+//I am a Junior Physics and computer science student. We want to build an Andriod App that makes college students easily buy the second handed books or furnitures. This App should ensure all trades are secured that would protect students' profits. We want this mobile App can suggest users'preference and sort the products with price and location.
+//This mobile App can be linked with social media.
