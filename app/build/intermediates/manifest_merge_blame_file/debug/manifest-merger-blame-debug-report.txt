@@ -1,0 +1,100 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.myapplication"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="15"
+8-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml
+10
+11    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+12    <!-- <uses-sdk android:minSdkVersion="14" /> -->
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->[com.google.firebase:firebase-firestore:21.3.1] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\f6ef700f8dec67e10f5443c142fa253d\jetified-firebase-firestore-21.3.1\AndroidManifest.xml:13:5-79
+13-->[com.google.firebase:firebase-firestore:21.3.1] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\f6ef700f8dec67e10f5443c142fa253d\jetified-firebase-firestore-21.3.1\AndroidManifest.xml:13:22-76
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->[com.google.firebase:firebase-firestore:21.3.1] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\f6ef700f8dec67e10f5443c142fa253d\jetified-firebase-firestore-21.3.1\AndroidManifest.xml:14:5-67
+14-->[com.google.firebase:firebase-firestore:21.3.1] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\f6ef700f8dec67e10f5443c142fa253d\jetified-firebase-firestore-21.3.1\AndroidManifest.xml:14:22-64
+15
+16    <application
+16-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml:5:5-19:19
+17        android:name="androidx.multidex.MultiDexApplication"
+18        android:allowBackup="true"
+18-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml:6:9-35
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.1.0] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\e91594602c73eba9f0c6fb1745d43dba\core-1.1.0\AndroidManifest.xml:24:18-86
+20        android:debuggable="true"
+21        android:icon="@mipmap/ic_launcher"
+21-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml:7:9-43
+22        android:label="@string/app_name"
+22-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml:8:9-41
+23        android:roundIcon="@mipmap/ic_launcher_round"
+23-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml:9:9-54
+24        android:supportsRtl="true"
+24-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml:10:9-35
+25        android:testOnly="true"
+26        android:theme="@style/AppTheme" >
+26-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml:11:9-40
+27        <activity android:name="com.example.myapplication.MainActivity" >
+27-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml:12:9-18:20
+27-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml:12:19-47
+28            <intent-filter>
+28-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml:13:13-17:29
+29                <action android:name="android.intent.action.MAIN" />
+29-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml:14:17-69
+29-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml:14:25-66
+30
+31                <category android:name="android.intent.category.LAUNCHER" />
+31-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml:16:17-77
+31-->C:\Users\Kyle\AndroidStudioProjects\gauchoshare\app\src\main\AndroidManifest.xml:16:27-74
+32            </intent-filter>
+33        </activity>
+34
+35        <service
+35-->[com.google.firebase:firebase-firestore:21.3.1] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\f6ef700f8dec67e10f5443c142fa253d\jetified-firebase-firestore-21.3.1\AndroidManifest.xml:17:9-23:19
+36            android:name="com.google.firebase.components.ComponentDiscoveryService"
+36-->[com.google.firebase:firebase-firestore:21.3.1] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\f6ef700f8dec67e10f5443c142fa253d\jetified-firebase-firestore-21.3.1\AndroidManifest.xml:18:13-84
+37            android:directBootAware="true"
+37-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\2c39b34ebad4adc4bec015d8c3a66bef\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
+38            android:exported="false" >
+38-->[com.google.firebase:firebase-firestore:21.3.1] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\f6ef700f8dec67e10f5443c142fa253d\jetified-firebase-firestore-21.3.1\AndroidManifest.xml:19:13-37
+39            <meta-data
+39-->[com.google.firebase:firebase-firestore:21.3.1] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\f6ef700f8dec67e10f5443c142fa253d\jetified-firebase-firestore-21.3.1\AndroidManifest.xml:20:13-22:85
+40                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+40-->[com.google.firebase:firebase-firestore:21.3.1] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\f6ef700f8dec67e10f5443c142fa253d\jetified-firebase-firestore-21.3.1\AndroidManifest.xml:21:17-111
+41                android:value="com.google.firebase.components.ComponentRegistrar" />
+41-->[com.google.firebase:firebase-firestore:21.3.1] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\f6ef700f8dec67e10f5443c142fa253d\jetified-firebase-firestore-21.3.1\AndroidManifest.xml:22:17-82
+42        </service>
+43
+44        <activity
+44-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\503246db64dcbb120c121745b36c75fd\play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+45            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+45-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\503246db64dcbb120c121745b36c75fd\play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+46            android:exported="false"
+46-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\503246db64dcbb120c121745b36c75fd\play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+47            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+47-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\503246db64dcbb120c121745b36c75fd\play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+48
+49        <provider
+49-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\2c39b34ebad4adc4bec015d8c3a66bef\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
+50            android:name="com.google.firebase.provider.FirebaseInitProvider"
+50-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\2c39b34ebad4adc4bec015d8c3a66bef\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
+51            android:authorities="com.example.myapplication.firebaseinitprovider"
+51-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\2c39b34ebad4adc4bec015d8c3a66bef\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
+52            android:exported="false"
+52-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\2c39b34ebad4adc4bec015d8c3a66bef\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
+53            android:initOrder="100" />
+53-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\2c39b34ebad4adc4bec015d8c3a66bef\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
+54
+55        <meta-data
+55-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\450428d809c28ba82f3afa52d48099f3\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+56            android:name="com.google.android.gms.version"
+56-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\450428d809c28ba82f3afa52d48099f3\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+57            android:value="@integer/google_play_services_version" />
+57-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Kyle\.gradle\caches\transforms-2\files-2.1\450428d809c28ba82f3afa52d48099f3\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+58    </application>
+59
+60</manifest>
