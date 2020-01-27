@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GauchoShare Profile UI</string>
+    <string name="twitterUsername">@janedoe</string>
+    <string name="facebookLink">facebook.com/jane.doe</string>
+    <string name="email">jane.doe@gmail.com</string>
+    <string name="phoneNumber">(888)-888-8888</string>
+</resources>
