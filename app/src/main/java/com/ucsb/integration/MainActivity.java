@@ -7,10 +7,10 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ucsb.integration.MainPage.FindActivity;
-import com.ucsb.integration.MainPage.MessageActivity;
-import com.ucsb.integration.MainPage.ProfileActivity;
-import com.ucsb.integration.MainPage.ShareActivity;
+import com.ucsb.integration.MainPage.Find.FindActivity;
+import com.ucsb.integration.MainPage.Message.MessageActivity;
+import com.ucsb.integration.MainPage.Profile.ProfileActivity;
+import com.ucsb.integration.MainPage.Share.ShareActivity;
 
 public class MainActivity extends AppCompatActivity {
 

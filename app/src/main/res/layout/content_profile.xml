@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainPage.ProfileActivity"
+    tools:context=".MainPage.Profile.ProfileActivity"
     tools:showIn="@layout/activity_profile">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,19 +20,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainPage.MessageActivity"
+            android:name=".MainPage.Message.MessageActivity"
             android:label="@string/title_activity_message"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainPage.ProfileActivity"
+            android:name=".MainPage.Profile.ProfileActivity"
             android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainPage.ShareActivity"
+            android:name=".MainPage.Share.ShareActivity"
             android:label="@string/title_activity_share"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainPage.FindActivity"
+            android:name=".MainPage.Find.FindActivity"
             android:label="@string/title_activity_find"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
