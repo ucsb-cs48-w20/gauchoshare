@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ucsb.integration">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".StartActivity"
+            android:label="@string/title_activity_start"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainPage.Message.MessageActivity"
+            android:label="@string/title_activity_message"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainPage.Profile.ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainPage.Share.ShareActivity"
+            android:label="@string/title_activity_share"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainPage.Find.FindActivity"
+            android:label="@string/title_activity_find"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Login.FacebookLoginActivity"
+            android:label="@string/title_activity_facebook_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Login.BasicLoginActivity"
+            android:label="@string/title_activity_basic_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Login.GoogleLoginActivity"
+            android:label="@string/title_activity_google_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
