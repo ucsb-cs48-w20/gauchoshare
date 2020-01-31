@@ -33,9 +33,15 @@ git push origin HEAD
 
 5. Once you have pushed your changes to your branch, you should see the following appear on the GitHub repository home page:
 
+![](images/pr-notif.png)
+
 6. Click on "Compare & pull request" and add a few comments detailing what changes were made in the branch you are trying to merge with master like so:
 
+![](images/pr-content.png)
+
 7. Once that is done, the final step is to click "Create pull request" and if the branch has no conflicts with the base (master) branch, then you are ready to merge the pull request like so:
+
+![](images/pr-merge.pnt)
 
 ---
 
