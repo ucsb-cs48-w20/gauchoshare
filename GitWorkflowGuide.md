@@ -41,7 +41,7 @@ git push origin HEAD
 
 7. Once that is done, the final step is to click "Create pull request" and if the branch has no conflicts with the base (master) branch, then you are ready to merge the pull request like so:
 
-![](images/pr-merge.pnt)
+![](images/pr-merge.png)
 
 ---
 
