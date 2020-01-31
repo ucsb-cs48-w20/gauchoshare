@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Integration</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_google_login">GoogleLoginActivity</string>
+    <string name="title_activity_basic_login">BasicLoginActivity</string>
+    <string name="title_activity_facebook_login">FacebookLoginActivity</string>
+    <string name="title_activity_find">FindActivity</string>
+    <string name="title_activity_share">ShareActivity</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_message">MessageActivity</string>
+    <string name="title_activity_start">StartActivity</string>
+</resources>
