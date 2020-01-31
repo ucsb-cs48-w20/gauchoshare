@@ -1,3 +1,4 @@
+# Stand-up Meeting 1/16/20
 * backend team is not sure how to divide up the tasks
 * backend team needs to implement user authentication but this task is difficult to do without having the frontend done yet
 * backend team is also largely unfamiliar with using Firebase, so one of our goals for this upcoming week is to familiarize ourselves with using Firebase, as well as Android Studio

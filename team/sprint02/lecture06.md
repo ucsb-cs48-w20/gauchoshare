@@ -1,3 +1,25 @@
-Profile UI page prototype design is finished, but the user authentication is still not working. Search function frontend is finished, so the next step will be to implement the backend for this feature.
+# Stand-up Meeting 1/27/20
 
-Backend team will continue trying to solve issues with user authentication using Google and Facebook, and try to connect to the Profile UI Page once that is set up. 
+### Chris
+* Finished Profile UI page prototype
+* Waiting for backend people to finish authentication to connect with backend
+
+### Yuehan
+* Still working on items UI list
+* Still not familiar enough with Android Studio
+
+### Boru
+* Almost finished with search function UI
+
+### Huiyu
+* Finished setting up Firebase database/account
+* Will work with Peizhen on finalizing authentication
+
+### Peizhen
+* Still trying to get authentication to work
+* Facebook and Google authentication still buggy
+
+### Kyle Stubbs
+* Finished messaging UI and homepage
+* Will try to work on backend of search function
+
