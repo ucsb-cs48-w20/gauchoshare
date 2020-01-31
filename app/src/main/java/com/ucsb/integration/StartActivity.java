@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.ucsb.integration.Login.BasicLoginActivity;
+import com.ucsb.integration.MainPage.Message.MessageActivity;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -25,7 +25,7 @@ public class StartActivity extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StartActivity.this, BasicLoginActivity.class));
+                startActivity(new Intent(StartActivity.this, MessageActivity.class));
             }
         });
 
