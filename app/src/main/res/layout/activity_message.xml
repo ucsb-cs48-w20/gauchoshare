@@ -6,11 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MainPage.Message.MessageActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycler_view">
-    </androidx.recyclerview.widget.RecyclerView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="172dp"
+        android:layout_height="200dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginStart="@dimen/fab_margin"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="@dimen/fab_margin"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -26,17 +31,11 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_message" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="172dp"
-        android:layout_height="200dp"
-        android:layout_gravity="bottom|end"
-        android:layout_marginStart="@dimen/fab_margin"
-        android:layout_marginTop="@dimen/fab_margin"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="675dp"
+        android:layout_alignParentBottom="true">
+    </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>
