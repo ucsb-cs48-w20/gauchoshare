@@ -29,6 +29,7 @@ public class SetupActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference UsersRef;
+    private FirebaseDatabase database;
 
     String currentUserID;
 
@@ -43,19 +44,19 @@ public class SetupActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
         Log.d(TAG, "User ID= "+ currentUserID);
-//        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID); //This is causing the app to crash
-        UsersRef = FirebaseDatabase.getInstance().getReference("Users")
+//        UsersRef = FirebaseDatabase.getInstance().getReference("Users");
+        database = FirebaseDatabase.getInstance();
+        UsersRef = database.getReference().child("Users").child(currentUserID);
 
         UserName = (EditText) findViewById(R.id.setup_username);
         FullName = (EditText) findViewById(R.id.setup_full_name);
-        Email = (EditText) findViewById(R.id.email);
+        Email = (EditText) findViewById(R.id.setup_email);
         PhoneNumber = (EditText) findViewById(R.id.setup_phone_number);
         SaveInformationbutton = (Button) findViewById(R.id.setup_information_button);
 
         SaveInformationbutton.setOnClickListener(new View.OnClickListener() {
-
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 SaveAccountSetupInformation();
             }
         });
@@ -79,23 +80,25 @@ public class SetupActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(phonenumber)) {
             Toast.makeText(this, "Please provide your Phone Number...", Toast.LENGTH_SHORT).show();
         } else {
-            HashMap userMap = new HashMap();
+            HashMap<String, Object> userMap = new HashMap<>();
             userMap.put("username", username);
             userMap.put("fullname", fullname);
             userMap.put("email", email);
             userMap.put("phonenumber", phonenumber);
-            UsersRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener() {
+            UsersRef.updateChildren(userMap).addOnCompleteListener((new OnCompleteListener<Void>() {
                 @Override
-                public void onComplete(@NonNull Task task) {
-                    if (task.isComplete()) {
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+
                         SendUserToMainActivity();
                         Toast.makeText(SetupActivity.this, "Your account has been successfully created..", Toast.LENGTH_LONG).show();
                     } else {
+
                         String message = task.getException().getMessage();
                         Toast.makeText(SetupActivity.this, "Error Occurred: " + message, Toast.LENGTH_SHORT).show();
                     }
                 }
-            });
+            }));
         }
 
     }
