@@ -9,13 +9,12 @@
 * Absent because of illness
 
 ### Boru
-* 
+* Still need to review his progress
+* Needs to assign himself more tasks to do
 
-### Huiyu
-* 
+### Huiyu and Kyle Stubbs
+* Will work together on creating messaging feature
 
 ### Peizhen
-* 
-
-### Kyle Stubbs
-* 
+* Finished the tutorial on Firebase
+* Will work on saving post metadata to Firebase

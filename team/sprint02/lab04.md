@@ -16,7 +16,7 @@
 * Working on the messaging feature with Kyle
 
 ### Peizhen
-* 
+* Will try to get feature to write to database
 
 ### Kyle Stubbs
-* 
+* Still collaborating with Huiyu on implementing the messaging feature
