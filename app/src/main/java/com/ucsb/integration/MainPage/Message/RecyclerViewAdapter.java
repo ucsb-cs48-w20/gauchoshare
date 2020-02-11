@@ -44,7 +44,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called");
         if (mContext == null) //trying to get it to stop crashing
-            return;
+              return;
         Glide.with(mContext)
                 .asBitmap()
                 .load(mImages.get(position))
