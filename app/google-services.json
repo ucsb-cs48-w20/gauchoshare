@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "531660061224-480d2tdavnhcd98m4cuqnupjbesebuk7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ucsb.integration",
+            "certificate_hash": "b266231e5180f2879ef9b4acf2c39675b3215592"
+          }
+        },
+        {
+          "client_id": "531660061224-ud018mv9fhh54711ndnf5jlpnd5i9vs0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ucsb.integration",
+            "certificate_hash": "1d648b0410ae177107ac63704143e6fffe494c93"
+          }
+        },
+        {
           "client_id": "531660061224-ccd0j8l67diivcj7piqmj1cg45v0obh4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
