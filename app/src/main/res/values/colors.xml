@@ -14,4 +14,7 @@
     <color name="followingBg">#49BEFF</color>
     <color name="grey">#E5E5E5</color>
     <color name="white">#FFFFFF</color>
+    <color name="colorPrimaryChat">#3eaeae</color>
+    <color name="colorPrimaryChatDark">#226e6e</color>
+    <color name="colorAccentChat">#226e6e</color>
 </resources>
