@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ucsb.integration.MainPage.Find.FindActivity;
 import com.ucsb.integration.MainPage.Message.MessageActivity;
-import com.ucsb.integration.MainPage.Profile.ProfileActivity;
+import com.ucsb.integration.MainPage.Profile.SetupActivity;
 import com.ucsb.integration.MainPage.Share.ShareActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                //Replace SetupActivity.class with ProfileActivity.class once bug is resolved
+                startActivity(new Intent(MainActivity.this, SetupActivity.class));
             }
         });
     }
