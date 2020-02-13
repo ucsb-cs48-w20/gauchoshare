@@ -20,7 +20,9 @@ public class item extends ArrayAdapter<String> {
     int layout;
     List<String> mObjects;
     //Context context;
-
+    public item() {
+        super(null, 0);
+    }
     public item(Context context, int resource,List<String>objects) {
         super(context,resource,objects);
         mObjects=objects;
