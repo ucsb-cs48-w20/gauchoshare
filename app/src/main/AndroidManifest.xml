@@ -12,8 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainPage.Profile.SetupActivity"></activity>
+        <activity android:name=".MainPage.Share.ListHistory"></activity>
+        <activity android:name=".MainPage.ShowList.item" />
+        <activity android:name=".MainPage.ShowList.ShowList" />
         <activity
             android:name=".StartActivity"
+            android:label="@string/title_activity_start"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainPage.ShowList.ItemDetail"
             android:label="@string/title_activity_start"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
