@@ -1,24 +1,36 @@
 package com.ucsb.integration;
 
+import com.google.firebase.database.DatabaseReference;
+
+import java.util.HashMap;
+
 public class User {
     public String id;
     public String email;
     public String nickname;
     public String username;
+    public String fullname;
+    public String phonenumber;
     public Boolean isUCSBStudent;
-    public String imageUrl;
+    public String imageURL;
+    //public DatabaseReference Items;
+    public HashMap<String, Object> Items;
 
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public User(String id, String email, String nickname, String username, Boolean isUCSBStudent, String imageUrl) {
+    public User(String id, String email, String nickname, String username, String fullname, String phonenumber,
+                Boolean isUCSBStudent, String imageURL, HashMap<String, Object> items) {
         this.id = id;
         this.email = email;
         this.nickname = nickname;
         this.username = username;
+        this.fullname = fullname;
+        this.phonenumber = phonenumber;
         this.isUCSBStudent = isUCSBStudent;
-        this.imageUrl = imageUrl;
+        this.imageURL = imageURL;
+        Items = items;
     }
 
     public String getId() {
@@ -61,11 +73,35 @@ public class User {
         isUCSBStudent = UCSBStudent;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    /*public HashMap<String, Object> getItems() {
+        return Items;
+    }
+
+    public void setItems(HashMap<String, Object> items) {
+        Items = items;
+    }*/
 }

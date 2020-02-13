@@ -71,13 +71,13 @@ public class SetupActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(username)) {
             Toast.makeText(this, "Please provide your username...", Toast.LENGTH_SHORT).show();
         }
-        if (TextUtils.isEmpty(fullname)) {
+        else if (TextUtils.isEmpty(fullname)) {
             Toast.makeText(this, "Please provide your Full Name...", Toast.LENGTH_SHORT).show();
         }
-        if (TextUtils.isEmpty(email)) {
+        else if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Please provide your Email Address...", Toast.LENGTH_SHORT).show();
         }
-        if (TextUtils.isEmpty(phonenumber)) {
+        else if (TextUtils.isEmpty(phonenumber)) {
             Toast.makeText(this, "Please provide your Phone Number...", Toast.LENGTH_SHORT).show();
         } else {
             HashMap<String, Object> userMap = new HashMap<>();
@@ -85,6 +85,8 @@ public class SetupActivity extends AppCompatActivity {
             userMap.put("fullname", fullname);
             userMap.put("email", email);
             userMap.put("phonenumber", phonenumber);
+            userMap.put("id", currentUserID);
+            userMap.put("imageURL", "default");
             UsersRef.updateChildren(userMap).addOnCompleteListener((new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
