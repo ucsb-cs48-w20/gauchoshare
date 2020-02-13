@@ -56,11 +56,11 @@ public class MessagePersonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message);
+        setContentView(R.layout.activity_message_person);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+        //setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("MessagePersonActivity");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,18 +100,19 @@ public class MessagePersonActivity extends AppCompatActivity {
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
+        //CURRENTLY THIS CAUSES IT TO CRASH BECAUSE OF THE ID PROBLEM, WILL FIX LATER
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                username.setText(user.getUsername());
+                /*username.setText(user.getUsername());
                 if (user.getImageUrl() == null || user.getImageUrl().equals("default")) { //had to change to null
                     profile_image.setImageResource(R.mipmap.ic_launcher);
                 } else {
                     //and this
                     Glide.with(getApplicationContext()).load(user.getImageUrl()).into(profile_image);
-                }
+                }*/
 
                 readMessages(fuser.getUid(), userid, user.getImageUrl());
             }

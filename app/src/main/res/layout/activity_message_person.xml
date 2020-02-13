@@ -19,7 +19,7 @@
             android:background="@color/colorPrimaryChatDark"
             android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <!--<de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:id="@+id/profile_image" />
@@ -31,7 +31,7 @@
                 android:layout_marginLeft="25dp"
                 android:textColor="#fff"
                 android:textStyle="bold"
-                android:layout_marginStart="25dp"/>
+                android:layout_marginStart="25dp"/>-->
 
         </androidx.appcompat.widget.Toolbar>
 

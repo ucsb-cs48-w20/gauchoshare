@@ -45,14 +45,14 @@ public class MessageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_message);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("MessageActivity");
+        getSupportActionBar().setTitle("MessageActivity"); //maybe change later to add title
 
-        profile_image = findViewById(R.id.profile_image);
-        username = findViewById(R.id.username);
+        //profile_image = findViewById(R.id.profile_image);
+        //username = findViewById(R.id.username);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
@@ -61,14 +61,15 @@ public class MessageActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                username.setText(user.getUsername());
+                /*username.setText(user.getUsername());
+                username.setText("MessageActivity"); //change later CHANGE THE IMAGEURL TO STOP CRASHING
                 if (user.getImageUrl() == null || user.getImageUrl().equals("default")) { //needed the null to stop crashing
                     profile_image.setImageResource(R.mipmap.ic_launcher);
                 } else {
 
                     //change this
                     Glide.with(getApplicationContext()).load(user.getImageUrl()).into(profile_image);
-                }
+                }*/
             }
 
             @Override
