@@ -29,7 +29,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     FirebaseUser fuser;
 
-    public MessageAdapter(Context mContext, List<Chat> mChat, String imagerrl) {
+    public MessageAdapter(Context mContext, List<Chat> mChat, String imageurl) {
         this.mContext = mContext;
         this.mChat = mChat;
         this.imageurl = imageurl;

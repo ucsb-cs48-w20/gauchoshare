@@ -24,7 +24,9 @@ import com.ucsb.integration.User;
 import com.ucsb.integration.adapter.UserAdapter;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class ChatsFragment extends Fragment {
 
@@ -95,9 +97,12 @@ public class ChatsFragment extends Fragment {
                     for (String id : usersList) {
                         if (user.getId() != null && user.getId().equals(id)) {
                             if (mUsers.size() != 0) {
-                                for (User user1 : mUsers) {
-                                    if (!user.getId().equals(user1.getId())) {
-                                        mUsers.add(user);
+                                //for (User user1 : mUsers) {
+                                for (ListIterator<User> iter = mUsers.listIterator(); iter.hasNext(); ) {
+                                    if (!user.getId().equals(iter.next().getId())) {
+                                        if (!mUsers.contains(user))
+                                            //mUsers.add(user);
+                                            iter.add(user);
                                     }
                                 }
                             } else {
