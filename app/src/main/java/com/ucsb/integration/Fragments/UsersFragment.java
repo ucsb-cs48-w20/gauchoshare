@@ -74,7 +74,7 @@ public class UsersFragment extends Fragment {
 
     private void searchUsers(String toString) {
         final FirebaseUser fuser = FirebaseAuth.getInstance().getCurrentUser();
-        Query query = FirebaseDatabase.getInstance().getReference("Users").orderByChild("username")
+        Query query = FirebaseDatabase.getInstance().getReference("Users").orderByChild("email")
                 .startAt(toString)
                 .endAt(toString+"uf8ff");
 
@@ -87,7 +87,7 @@ public class UsersFragment extends Fragment {
 
                     assert user != null;
                     assert fuser != null;
-                    if (!user.getId().equals(fuser.getUid())) {
+                    if (user.getId() == null || !user.getId().equals(fuser.getUid())) {
                         mUsers.add(user);
                     }
                 }
