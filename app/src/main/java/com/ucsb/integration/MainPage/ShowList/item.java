@@ -27,7 +27,7 @@ public class item extends ArrayAdapter<String> {
         layout=resource;
     }
 
-    public item(@NonNull Context context, int resource) {
+    public item(Context context, int resource) {
         super(context, resource);
     }
 
