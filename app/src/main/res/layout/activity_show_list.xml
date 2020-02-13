@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="MainPage.ShowList.ShowList"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/headd"
+        android:textColor="#0000FF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Items"
+        android:textStyle="bold"
+        android:textSize="50dp"
+        />
+
+    <EditText
+        android:id="@+id/item_input"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnAdd"
+        android:text=""
+        />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headd"
+        android:text="@string/lblBtnAdd"
+        />
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headd"
+        android:choiceMode="multipleChoice" >
+    </ListView>
+</LinearLayout>
