@@ -26,12 +26,16 @@ UCSB students are cheap and do not want to have to buy extra, overpriced materia
 Dependencies are specified in the build.gradle files and will be installed automatically when building the Android app.
 
 ### Installation Steps
+1. Install gradle CLI
+```
+brew install gradle
+```
 
-1. Clone the repo
+2. Clone the repo
 ```
 git clone git@github.com:ucsb-cs48-w20/gauchoshare.git
 ```
-2. Change your working directory into the repository directory and run the following command:
+3. Change your working directory into the repository directory and run the following command:
 * On Windows:
 ```
 gradlew build
@@ -40,7 +44,7 @@ gradlew build
 ```
 ./gradlew build
 ```
-3. Your Android App is now built and ready to be run on any Android Device/Emulator :D
+4. Your Android App is now built and ready to be run on any Android Device/Emulator :D
 
 
 ## Functionality
