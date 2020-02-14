@@ -8,10 +8,10 @@
 * Still trying to allow for both Facebook and Google Authentication
 
 ### Boru
-* 
+* Nothing
 
 ### Huiyu and Kyle Stubbs
 * Testing messaging feature with User profile creation
 
 ### Peizhen
-* 
+* Finished item add
