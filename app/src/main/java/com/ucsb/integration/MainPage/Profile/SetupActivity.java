@@ -3,7 +3,6 @@ package com.ucsb.integration.MainPage.Profile;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,8 +42,6 @@ public class SetupActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
-        Log.d(TAG, "User ID= "+ currentUserID);
-//        UsersRef = FirebaseDatabase.getInstance().getReference("Users");
         database = FirebaseDatabase.getInstance();
         UsersRef = database.getReference().child("Users").child(currentUserID);
 
