@@ -72,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
                 UsersRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (!dataSnapshot.hasChild(currentUserID)) {
+                        // added hasChild to make SetupActivity work
+                        if (!dataSnapshot.child(currentUserID).hasChild("phonenumber")) {
                             startActivity(new Intent(MainActivity.this, SetupActivity.class));
 
                         } else {
