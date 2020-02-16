@@ -38,7 +38,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final User user = mUsers.get(position);
-        holder.username.setText(user.getEmail()); //CHANGE TO USERNAME WHEN FIXED LATER
+        if (user.getUsername() != null)
+            holder.username.setText(user.getUsername()); //displays username
+        else if (user.getEmail() != null)
+            holder.username.setText(user.getEmail()); //displays email if no username
+
         if (user.getImageURL() == null || user.getImageURL().equals("default")) { //testing to check for null
             holder.profile_image.setImageResource(R.mipmap.ic_launcher);
         } else {
