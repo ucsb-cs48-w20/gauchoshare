@@ -10,7 +10,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ucsb.integration.MainActivity;
-import com.ucsb.integration.MainPage.ShowList.ShowList;
+import com.ucsb.integration.MainPage.ShowList.ItemDetail;
+import com.ucsb.integration.MainPage.ShowList.ItemDetail;
 import com.ucsb.integration.R;
 
 public class ShareActivity extends AppCompatActivity {
@@ -30,7 +31,7 @@ public class ShareActivity extends AppCompatActivity {
         sItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ShareActivity.this, ShowList.class));
+                startActivity(new Intent(ShareActivity.this, ItemDetail.class));
             }
         });
 

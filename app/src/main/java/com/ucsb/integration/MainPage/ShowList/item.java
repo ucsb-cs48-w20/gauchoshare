@@ -15,9 +15,57 @@ import com.ucsb.integration.R;
 
 import java.util.List;
 
-public class item extends ArrayAdapter<String> {
+public class item{
 
-    int layout;
+
+    String Name;
+    String Info;
+    String Type;
+    String Price;
+
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getInfo() {
+        return Info;
+    }
+
+    public void setInfo(String info) {
+        Info = info;
+    }
+
+    public String getType() {
+        return Type;
+    }
+
+    public void setType(String type) {
+        Type = type;
+    }
+
+    public String getPrice() {
+        return Price;
+    }
+
+    public void setPrice(String price) {
+        Price = price;
+    }
+
+    public item(){
+
+    }
+    public item(String name, String info, String type, String price) {
+        Name = name;
+        Info = info;
+        Type = type;
+        Price = price;
+    }
+    /*int layout;        //add in the history list
     List<String> mObjects;
     //Context context;
     public item() {
@@ -80,4 +128,25 @@ public class item extends ArrayAdapter<String> {
 
         return convertView;
     }
+    //xml file
+    <TextView
+        android:id="@+id/td"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:text="Item Name: "
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/item_h"
+        android:layout_width="401dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/td"
+        android:text="enter"
+        android:textColor="#00007F"
+        android:textSize="25dp" />
+
+
+    */
 }
