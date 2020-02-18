@@ -16,4 +16,5 @@
     <string name="lblBtnAdd">Add Item</string>
     <string name="txtEmpty">List is empty</string>
     <string name="lblBtnDel">Delete Selected Items</string>
+    <string name="title_activity_user_map">Map</string>
 </resources>

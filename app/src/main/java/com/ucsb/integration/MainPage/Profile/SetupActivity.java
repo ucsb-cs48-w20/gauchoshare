@@ -57,6 +57,14 @@ public class SetupActivity extends AppCompatActivity {
                 SaveAccountSetupInformation();
             }
         });
+
+        Button user_map = findViewById(R.id.userPosition);
+        user_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SetupActivity.this, userMap.class));
+            }
+        });
     }
 
     private void SaveAccountSetupInformation() {

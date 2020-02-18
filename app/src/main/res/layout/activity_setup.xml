@@ -10,13 +10,14 @@
         android:id="@+id/rellay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="20dp"
-        android:background="@drawable/grad">
+        android:background="@drawable/grad"
+        android:paddingBottom="20dp">
+
         <RelativeLayout
             android:id="@+id/imgUser"
             android:layout_width="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:background="@drawable/circle_border">
 
@@ -33,6 +34,7 @@
                 android:padding="3dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/default_user" />
+
         </RelativeLayout>
 
     </RelativeLayout>
@@ -95,9 +97,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="43dp"
+        android:layout_marginBottom="47dp"
         android:padding="14dp"
         android:text="Save" />
+
+    <Button
+        android:id="@+id/userPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="47dp"
+        android:text="Check User Map"
+        android:layout_toRightOf="@id/setup_information_button" />
+
 
 </RelativeLayout>

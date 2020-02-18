@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.ucsb.integration">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
@@ -13,11 +24,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainPage.Message.MessagePersonActivity"></activity>
-        <activity android:name=".MainPage.Profile.SetupActivity"></activity>
-        <activity android:name=".MainPage.Share.ListHistory"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCaLsqqR00f_nUmOVz4ZgCsdVWcJZ5lwYU" />
+
+
+        <activity android:name=".MainPage.Message.MessagePersonActivity" />
+        <activity android:name=".MainPage.Profile.SetupActivity" />
+        <activity android:name=".MainPage.Share.ListHistory" />
         <activity android:name=".MainPage.ShowList.item" />
         <activity android:name=".MainPage.ShowList.ShowList" />
+        <activity
+            android:name=".MainPage.Profile.userMap"
+            android:label="Map">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".StartActivity"
             android:label="@string/title_activity_start"

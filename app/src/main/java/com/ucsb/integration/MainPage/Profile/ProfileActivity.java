@@ -1,7 +1,14 @@
 package com.ucsb.integration.MainPage.Profile;
 
+
+
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +20,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ucsb.integration.MainActivity;
+import com.ucsb.integration.MainPage.Find.FindActivity;
 import com.ucsb.integration.R;
 
 import java.util.HashMap;
