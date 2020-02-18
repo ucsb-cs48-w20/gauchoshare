@@ -9,7 +9,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
-import com.ucsb.integration.MainActivity;
 import com.ucsb.integration.MainPage.ShowList.ShowList;
 import com.ucsb.integration.R;
 
@@ -26,7 +25,7 @@ public class ShareActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        sItem = (Button)findViewById(R.id.button);
+        sItem = (Button)findViewById(R.id.button_upload_image);
         sItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

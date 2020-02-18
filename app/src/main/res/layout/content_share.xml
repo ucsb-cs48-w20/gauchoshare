@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_share">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_upload_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="168dp"
@@ -26,6 +26,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/button_upload_image"
         app:layout_constraintVertical_bias="0.374" />
 </androidx.constraintlayout.widget.ConstraintLayout>
