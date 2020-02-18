@@ -13,9 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainPage.Message.MessagePersonActivity"></activity>
-        <activity android:name=".MainPage.Profile.SetupActivity"></activity>
-        <activity android:name=".MainPage.Share.ListHistory"></activity>
+        <activity android:name=".MainPage.Listing.CreateListingActivity"></activity>
+        <activity android:name=".MainPage.Message.MessagePersonActivity" />
+        <activity android:name=".MainPage.Profile.SetupActivity" />
+        <activity android:name=".MainPage.Share.ListHistory" />
         <activity android:name=".MainPage.ShowList.item" />
         <activity android:name=".MainPage.ShowList.ShowList" />
         <activity

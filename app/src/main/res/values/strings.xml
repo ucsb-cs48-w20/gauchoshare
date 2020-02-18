@@ -16,4 +16,34 @@
     <string name="lblBtnAdd">Add Item</string>
     <string name="txtEmpty">List is empty</string>
     <string name="lblBtnDel">Delete Selected Items</string>
+
+    <string-array name="categories">
+        <item>None</item>
+        <item>Antiques and Collectibles</item>
+        <item>Appliances</item>
+        <item>Arts and Crafts</item>
+        <item>Auto Parts</item>
+        <item>Bags and Luggage</item>
+        <item>Bicycles</item>
+        <item>Books</item>
+        <item>Movies</item>
+        <item>Music</item>
+        <item>Electronics and Computers</item>
+        <item>Furniture</item>
+        <item>Garage Sale</item>
+        <item>Garden</item>
+        <item>Health and Beauty</item>
+        <item>Household Items</item>
+        <item>Jewelry and Accessories</item>
+        <item>Men\'s Clothing and Shoes</item>
+        <item>Women\'s Clothing and Shoes</item>
+        <item>Musical Instruments</item>
+        <item>Pet Supplies</item>
+        <item>Sports and Outdoors</item>
+        <item>Tools</item>
+        <item>Toys and Games</item>
+        <item>Vehicles</item>
+        <item>Video Games</item>
+        <item>Miscellaneous</item>
+    </string-array>
 </resources>
