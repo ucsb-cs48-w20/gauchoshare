@@ -118,7 +118,7 @@ public class CreateListingActivity extends AppCompatActivity implements AdapterV
             Toast.makeText(CreateListingActivity.this, "Please select a category", Toast.LENGTH_SHORT).show();
         }
         else {
-            final String listingId = mDatabaseRef.push().getKey();
+            final String listingId = mDatabaseRef.push().getKey(); //generates random key
             if (TextUtils.isEmpty(description)) {
                 mDatabaseRef.child(listingId).child("description").setValue("None");
             } else {
