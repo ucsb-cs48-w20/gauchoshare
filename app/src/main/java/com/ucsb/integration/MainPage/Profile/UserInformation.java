@@ -19,16 +19,16 @@ public class UserInformation {
         this.id = id;
         this.imageUrl = imageUrl;
     }
-    public String getUserName() {
+    public String getUsername() {
         return this.username;
     }
-    public String getFullName() {
+    public String getFullname() {
         return this.fullname;
     }
     public String getEmail() {
         return this.email;
     }
-    public String getPhoneNumber() {
+    public String getPhonenumber() {
         return this.phonenumber;
     }
     public String getId() {
@@ -46,11 +46,11 @@ public class UserInformation {
         this.imageUrl = imageUrl;
     }
 
-    public void setUserName(String userName) {
+    public void setUsername(String userName) {
         this.username = userName;
     }
 
-    public void setFullName(String fullName) {
+    public void setFullname(String fullName) {
         this.fullname = fullName;
     }
 
@@ -58,7 +58,7 @@ public class UserInformation {
         this.email = email;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhonenumber(String phoneNumber) {
         this.phonenumber = phoneNumber;
     }
 }

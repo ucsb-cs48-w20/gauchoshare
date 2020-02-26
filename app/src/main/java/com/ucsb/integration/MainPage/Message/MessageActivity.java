@@ -9,13 +9,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,10 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.ucsb.integration.Fragments.ChatsFragment;
 import com.ucsb.integration.Fragments.UsersFragment;
 import com.ucsb.integration.R;
-import com.ucsb.integration.User;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -60,7 +54,7 @@ public class MessageActivity extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
+                //UserInformation user = dataSnapshot.getValue(UserInformation.class);
                 /*username.setText(user.getUsername());
                 username.setText("MessageActivity"); //change later CHANGE THE IMAGEURL TO STOP CRASHING
                 if (user.getImageUrl() == null || user.getImageUrl().equals("default")) { //needed the null to stop crashing

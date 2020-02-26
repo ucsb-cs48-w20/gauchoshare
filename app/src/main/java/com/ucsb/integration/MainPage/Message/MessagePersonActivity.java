@@ -8,14 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,8 +21,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ucsb.integration.MainPage.Profile.UserInformation;
 import com.ucsb.integration.R;
-import com.ucsb.integration.User;
 import com.ucsb.integration.adapter.MessageAdapter;
 
 import java.util.ArrayList;
@@ -105,7 +103,7 @@ public class MessagePersonActivity extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
+                UserInformation user = dataSnapshot.getValue(UserInformation.class);
                 /*username.setText(user.getUsername());
                 if (user.getImageUrl() == null || user.getImageUrl().equals("default")) { //had to change to null
                     profile_image.setImageResource(R.mipmap.ic_launcher);
@@ -114,7 +112,7 @@ public class MessagePersonActivity extends AppCompatActivity {
                     Glide.with(getApplicationContext()).load(user.getImageUrl()).into(profile_image);
                 }*/
 
-                readMessages(fuser.getUid(), userid, user.getImageURL());
+                readMessages(fuser.getUid(), userid, user.getImageUrl());
             }
 
             @Override

@@ -22,8 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.ucsb.integration.MainPage.Profile.UserInformation;
 import com.ucsb.integration.R;
-import com.ucsb.integration.User;
 import com.ucsb.integration.adapter.UserAdapter;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class UsersFragment extends Fragment {
     private RecyclerView recyclerView;
 
     private UserAdapter userAdapter;
-    private List<User> mUsers;
+    private List<UserInformation> mUsers;
 
     EditText search_users;
 
@@ -83,7 +83,7 @@ public class UsersFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mUsers.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    User user = snapshot.getValue(User.class);
+                    UserInformation user = snapshot.getValue(UserInformation.class);
 
                     assert user != null;
                     assert fuser != null;
@@ -112,7 +112,7 @@ public class UsersFragment extends Fragment {
                 if (search_users.getText().toString().equals("")) {
                     mUsers.clear();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        User user = snapshot.getValue(User.class);
+                        UserInformation user = snapshot.getValue(UserInformation.class);
 
                         assert user != null;
                         assert firebaseUser != null;
