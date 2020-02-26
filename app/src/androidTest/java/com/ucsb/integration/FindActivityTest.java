@@ -81,7 +81,7 @@ public class FindActivityTest {
                         isDisplayed()));
         appCompatButton2.perform(click());
 
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(8);
 
         ViewInteraction appCompatButton3 = onView(
                 allOf(withId(R.id.find), withText("Find"),
