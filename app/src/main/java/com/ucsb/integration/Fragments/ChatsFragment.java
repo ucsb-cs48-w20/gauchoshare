@@ -19,12 +19,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ucsb.integration.MainPage.Message.Chat;
+import com.ucsb.integration.MainPage.Profile.UserInformation;
 import com.ucsb.integration.R;
-import com.ucsb.integration.User;
 import com.ucsb.integration.adapter.UserAdapter;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -33,7 +32,7 @@ public class ChatsFragment extends Fragment {
     private RecyclerView recyclerView;
 
     private UserAdapter userAdapter;
-    private List<User> mUsers;
+    private List<UserInformation> mUsers;
 
     FirebaseUser fuser;
     DatabaseReference reference;
@@ -91,14 +90,14 @@ public class ChatsFragment extends Fragment {
                 mUsers.clear();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    User user = snapshot.getValue(User.class);
+                    UserInformation user = snapshot.getValue(UserInformation.class);
 
                     //display 1 user from chats
                     for (String id : usersList) {
                         if (user.getId() != null && user.getId().equals(id)) {
                             if (mUsers.size() != 0) {
                                 //for (User user1 : mUsers) {
-                                for (ListIterator<User> iter = mUsers.listIterator(); iter.hasNext(); ) {
+                                for (ListIterator<UserInformation> iter = mUsers.listIterator(); iter.hasNext(); ) {
                                     if (!user.getId().equals(iter.next().getId())) {
                                         if (!mUsers.contains(user))
                                             //mUsers.add(user);
