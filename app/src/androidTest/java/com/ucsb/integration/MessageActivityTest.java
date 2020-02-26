@@ -85,7 +85,7 @@ public class MessageActivityTest {
                         isDisplayed()));
         appCompatButton2.perform(click());
 
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(8);
 
         ViewInteraction appCompatButton3 = onView(
                 allOf(withId(R.id.message), withText("Message"),

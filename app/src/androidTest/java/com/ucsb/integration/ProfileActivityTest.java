@@ -84,7 +84,7 @@ public class ProfileActivityTest {
                         isDisplayed()));
         appCompatButton2.perform(click());
 
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(8);
 
         ViewInteraction appCompatButton4 = onView(
                 allOf(withId(R.id.profile), withText("Profile"),

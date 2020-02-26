@@ -85,7 +85,7 @@ public class ShareActivityTest {
                         isDisplayed()));
         appCompatButton2.perform(click());
 
-        TimeUnit.SECONDS.sleep(3);
+        TimeUnit.SECONDS.sleep(8);
 
         ViewInteraction appCompatButton3 = onView(
                 allOf(withId(R.id.share), withText("Share"),
