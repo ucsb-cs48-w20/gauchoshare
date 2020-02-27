@@ -54,7 +54,6 @@ public class CreateListingActivity extends AppCompatActivity implements AdapterV
     private FirebaseAuth mAuth;
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
-    private DatabaseReference mDatebaseRef2;
 
     private StorageTask mUploadTask;
     private boolean imageUploaded;
