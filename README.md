@@ -56,8 +56,8 @@ gradlew build
 
 ## Known Problems
 
-* App currently allows user to create multiple profiles in the SetUpActivity file
 * Search functionality only works when User searches the EXACT keywords of the item they are looking for
+* Profile image upload does not crop to fit the ImageView provided
 
 
 ## Contributing
