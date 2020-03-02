@@ -9,38 +9,38 @@ import static org.junit.Assert.*;
 public class UserInformationUnitTest {
     @Test
     public void test_getUsername() {
-        UserInformation userInformation = new UserInformation("username", "fullname", "email", "number", "id", "imageUrl");
+        UserInformation userInformation = new UserInformation("username", "fullname", "email", "number", "id", "imageURL", "venmo");
         assertEquals("username", userInformation.getUsername());
     }
 
     @Test
     public void test_getFullname() {
-        UserInformation userInformation = new UserInformation("username", "fullname", "email", "number", "id", "imageUrl");
+        UserInformation userInformation = new UserInformation("username", "fullname", "email", "number", "id", "imageURL", "venmo");
         assertEquals("fullname", userInformation.getFullname());
     }
 
     @Test
     public void test_getEmail() {
-        UserInformation userInformation = new UserInformation("username", "fullname", "email", "number", "id", "imageUrl");
+        UserInformation userInformation = new UserInformation("username", "fullname", "email", "number", "id", "imageURL", "venmo");
         assertEquals("email", userInformation.getEmail());
     }
 
     @Test
     public void test_getPhonenumber() {
-        UserInformation userInformation = new UserInformation("username", "fullname", "email", "number", "id", "imageUrl");
+        UserInformation userInformation = new UserInformation("username", "fullname", "email", "number", "id", "imageURL", "venmo");
         assertEquals("number", userInformation.getPhonenumber());
     }
 
     @Test
     public void test_getId() {
-        UserInformation userInformation = new UserInformation("username", "fullname", "email", "number", "id", "imageUrl");
+        UserInformation userInformation = new UserInformation("username", "fullname", "email", "number", "id", "imageURL", "venmo");
         assertEquals("id", userInformation.getId());
     }
 
     @Test
     public void test_getImageUrl() {
-        UserInformation userInformation = new UserInformation("username", "fullname", "email", "number", "id", "imageUrl");
-        assertEquals("imageUrl", userInformation.getImageUrl());
+        UserInformation userInformation = new UserInformation("username", "fullname", "email", "number", "id", "imageURL", "venmo");
+        assertEquals("imageURL", userInformation.getImageURL());
     }
 
     @Test
@@ -81,7 +81,14 @@ public class UserInformationUnitTest {
     @Test
     public void test_setImageUrl() {
         UserInformation userInformation = new UserInformation();
-        userInformation.setImageUrl("testImageUrl");
-        assertEquals("testImageUrl", userInformation.getImageUrl());
+        userInformation.setImageURL("testImageUrl");
+        assertEquals("testImageUrl", userInformation.getImageURL());
+    }
+
+    @Test
+    public void test_setVenmo() {
+        UserInformation userInformation = new UserInformation();
+        userInformation.setVenmo("testVenmo");
+        assertEquals("testVenmo", userInformation.getVenmo());
     }
 }

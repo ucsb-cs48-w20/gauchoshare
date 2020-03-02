@@ -43,10 +43,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         else if (user.getEmail() != null)
             holder.username.setText(user.getEmail()); //displays email if no username
 
-        if (user.getImageUrl() == null || user.getImageUrl().equals("default")) { //testing to check for null
+        if (user.getImageURL() == null || user.getImageURL().equals("default")) { //testing to check for null
             holder.profile_image.setImageResource(R.mipmap.ic_launcher);
         } else {
-            Glide.with(mContext).load(user.getImageUrl()).into(holder.profile_image);
+            Glide.with(mContext).load(user.getImageURL()).into(holder.profile_image);
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
