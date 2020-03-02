@@ -36,7 +36,6 @@ public class CreateListingActivity extends AppCompatActivity implements AdapterV
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
-    private Button mButtonUploadImage;
     private Button mButtonChooseImage;
     private Button mButtonCreate;
     private EditText mEditTextTitle;
@@ -64,7 +63,6 @@ public class CreateListingActivity extends AppCompatActivity implements AdapterV
         setContentView(R.layout.activity_create_listing);
         setTitle("Create listing");
         mButtonChooseImage = findViewById(R.id.button_choose_image);
-        mButtonUploadImage = findViewById(R.id.button_upload_image);
         mButtonCreate = findViewById(R.id.button_create_listing);
         mEditTextTitle = findViewById(R.id.listing_title);
         mEditTextPrice = findViewById(R.id.listing_price);
@@ -178,7 +176,7 @@ public class CreateListingActivity extends AppCompatActivity implements AdapterV
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             mImageUri = data.getData();
-            Picasso.with(this).load(mImageUri).into(mImageView);
+            Picasso.with(this).load(mImageUri).fit().centerCrop().into(mImageView);
             imageUploaded = true;
         }
     }

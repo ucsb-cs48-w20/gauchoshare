@@ -37,6 +37,16 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/default_user" />
         </RelativeLayout>
+        <Button
+            android:id="@+id/button_choose_image"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="4dp"
+            android:text="Choose image" />
 
     </RelativeLayout>
     <RelativeLayout
