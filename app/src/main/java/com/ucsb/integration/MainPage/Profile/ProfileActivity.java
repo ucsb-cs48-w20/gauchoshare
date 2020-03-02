@@ -40,6 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
         final TextView fullNameView = (TextView) findViewById(R.id.full_name);
         final TextView emailView = (TextView) findViewById(R.id.email);
         final TextView phoneNumberView = (TextView) findViewById(R.id.phone_number);
+        final TextView venmo = (TextView) findViewById(R.id.venmo);
 
         UsersRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -49,7 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
                     fullNameView.setText(data.get("fullname").toString());
                     emailView.setText(data.get("email").toString());
                     phoneNumberView.setText(data.get("phonenumber").toString());
-
+                    venmo.setText(data.get("venmo").toString());
             }
 
             @Override

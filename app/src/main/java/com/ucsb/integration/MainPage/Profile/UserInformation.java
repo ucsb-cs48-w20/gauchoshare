@@ -6,18 +6,20 @@ public class UserInformation {
     public String email;
     public String phonenumber;
     public String id;
-    public String imageUrl;
+    public String imageURL;
+    public String venmo;
 
     public UserInformation() {
 
     }
-    public UserInformation(String username, String fullname, String email, String phonenumber, String id, String imageUrl) {
+    public UserInformation(String username, String fullname, String email, String phonenumber, String id, String imageURL, String venmo) {
         this.username = username;
         this.fullname = fullname;
         this.email = email;
         this.phonenumber = phonenumber;
         this.id = id;
-        this.imageUrl = imageUrl;
+        this.imageURL = imageURL;
+        this.venmo = venmo;
     }
     public String getUsername() {
         return this.username;
@@ -34,16 +36,11 @@ public class UserInformation {
     public String getId() {
         return this.id;
     }
-    public String getImageUrl() {
-        return this.imageUrl;
-    }
+    public String getImageURL() { return imageURL; }
+    public String getVenmo() { return this.venmo; }
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     public void setUsername(String userName) {
@@ -61,4 +58,8 @@ public class UserInformation {
     public void setPhonenumber(String phoneNumber) {
         this.phonenumber = phoneNumber;
     }
+
+    public void setImageURL(String imageURL) { this.imageURL = imageURL; }
+
+    public void setVenmo(String venmo) {this.venmo = venmo;}
 }

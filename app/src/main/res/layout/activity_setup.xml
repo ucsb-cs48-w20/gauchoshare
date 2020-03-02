@@ -9,14 +9,17 @@
     <RelativeLayout
         android:id="@+id/rellay1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="20dp"
-        android:background="@drawable/grad">
+        android:layout_height="269dp"
+        android:background="@drawable/grad"
+        android:paddingBottom="20dp">
+
         <RelativeLayout
             android:id="@+id/imgUser"
             android:layout_width="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
             android:layout_marginTop="20dp"
             android:background="@drawable/circle_border">
 
@@ -36,68 +39,137 @@
         </RelativeLayout>
 
     </RelativeLayout>
-
-    <EditText
-        android:id="@+id/setup_username"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="230dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Username"
-        android:inputType="textMultiLine"
-        android:padding="14dp" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rellay1">
 
-    <EditText
-        android:id="@+id/setup_full_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="336dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Full Name"
-        android:inputType="textMultiLine"
-        android:padding="14dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/setup_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="440dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Email"
-        android:inputType="textMultiLine"
-        android:padding="14dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:textColor="@color/headings"
+                    android:textSize="13sp" />
 
-    <EditText
-        android:id="@+id/setup_phone_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="140dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Phone Number"
-        android:inputType="textMultiLine"
-        android:padding="14dp" />
+                <EditText
+                    android:id="@+id/setup_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="janedoe123"
+                    android:inputType="textMultiLine"
+                    android:padding="14dp" />
 
-    <Button
-        android:id="@+id/setup_information_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="43dp"
-        android:padding="14dp"
-        android:text="Save" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Full Name"
+                    android:textColor="@color/headings"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/setup_full_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="Jane Doe"
+                    android:inputType="textMultiLine"
+                    android:padding="14dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone Number"
+                    android:textColor="@color/headings"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/setup_phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="(888)-888-8888"
+                    android:inputType="textMultiLine"
+                    android:padding="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Venmo (Optional)"
+                    android:textColor="@color/headings"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/setup_venmo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="\@JaneDoe123"
+                    android:inputType="textMultiLine"
+                    android:padding="14dp" />
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/setup_information_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="43dp"
+                    android:padding="14dp"
+                    android:text="Save" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

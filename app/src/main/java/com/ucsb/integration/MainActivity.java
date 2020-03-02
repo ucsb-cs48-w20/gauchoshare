@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
                         if (!dataSnapshot.child(currentUserID).hasChild("phonenumber")) {
                             startActivity(new Intent(MainActivity.this, SetupActivity.class));
 
-                        } else {
+                        }
+                        else {
                             startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                         }
                     }
