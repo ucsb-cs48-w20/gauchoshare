@@ -40,7 +40,7 @@ public class UserInformationUnitTest {
     @Test
     public void test_getImageUrl() {
         UserInformation userInformation = new UserInformation("username", "fullname", "email", "number", "id", "imageURL", "venmo");
-        assertEquals("imageUrl", userInformation.getImageURL());
+        assertEquals("imageURL", userInformation.getImageURL());
     }
 
     @Test
