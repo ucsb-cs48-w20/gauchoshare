@@ -15,7 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ucsb.integration.MainPage.Find.FindActivity;
-import com.ucsb.integration.MainPage.Listing.CreateListingActivity;
+import com.ucsb.integration.MainPage.Listing.DirectionActivity;
 import com.ucsb.integration.MainPage.Message.MessageActivity;
 import com.ucsb.integration.MainPage.Profile.ProfileActivity;
 import com.ucsb.integration.MainPage.Profile.SetupActivity;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, CreateListingActivity.class));
+                startActivity(new Intent(MainActivity.this, DirectionActivity.class));
             }
         });
 
