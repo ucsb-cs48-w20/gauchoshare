@@ -2,7 +2,6 @@ package com.ucsb.integration.MainPage.Profile;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -58,6 +57,10 @@ public class ProfileActivity extends AppCompatActivity {
                     emailView.setText(data.get("email").toString());
                     phoneNumberView.setText(data.get("phonenumber").toString());
                     venmo.setText(data.get("venmo").toString());
+                String imageURL = dataSnapshot.child("imageURL").getValue().toString();
+                if (imageURL != "None") {
+                    Picasso.get().load(imageURL).transform(new CircleTransform()).into(mImageView);
+                }
             }
 
             @Override
@@ -65,12 +68,6 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
-        String imageURL = UsersRef.child("imageURL").toString();
-        if (imageURL != "None") {
-            mImageUri = Uri.parse(imageURL);
-            Picasso.with(this).load(mImageUri).fit().centerCrop().into(mImageView);
-            Log.d("IMAGE DISPLAY MESSAGE", "SUCCESSSSSSSS");
-        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

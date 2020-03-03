@@ -60,7 +60,7 @@ public class SetupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
-        setTitle("Please complete your profile");
+        setTitle("Please complete your profile first");
 
         mButtonChooseImage = findViewById(R.id.button_choose_image);
 
@@ -69,7 +69,7 @@ public class SetupActivity extends AppCompatActivity {
         currentUserEmail = mAuth.getCurrentUser().getEmail();
         database = FirebaseDatabase.getInstance();
         UsersRef = database.getReference().child("Users").child(currentUserID);
-        mStorageRef = FirebaseStorage.getInstance().getReference("profilePics");
+        mStorageRef = FirebaseStorage.getInstance().getReference("profilePics/" + currentUserID);
         mImageView = findViewById(R.id.setup_profile_image);
 
 
@@ -116,7 +116,7 @@ public class SetupActivity extends AppCompatActivity {
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             mImageUri = data.getData();
-            Picasso.with(this).load(mImageUri).fit().centerCrop().into(mImageView);
+            Picasso.get().load(mImageUri).transform(new CircleTransform()).into(mImageView);
             imageUploaded = true;
         }
     }
@@ -155,7 +155,7 @@ public class SetupActivity extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                UsersRef.child("imageURL").setValue(taskSnapshot.getUploadSessionUri().toString());
+                                UsersRef.child("imageURL").setValue(mImageUri.toString());
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
