@@ -78,9 +78,9 @@ public class CreateListingActivity extends AppCompatActivity implements AdapterV
         category = "None";
 
         mAuth = FirebaseAuth.getInstance();
-        mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Listings");
         currentUserID = mAuth.getCurrentUser().getUid();
+        mStorageRef = FirebaseStorage.getInstance().getReference("listingPhotos/" + currentUserID);
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Listings");
 
         imageUploaded = false;
 
@@ -134,7 +134,7 @@ public class CreateListingActivity extends AppCompatActivity implements AdapterV
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                mDatabaseRef.child(listingId).child("imageUrl").setValue(taskSnapshot.getUploadSessionUri().toString());
+                                mDatabaseRef.child(listingId).child("imageUrl").setValue(mImageUri.toString());
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -176,7 +176,7 @@ public class CreateListingActivity extends AppCompatActivity implements AdapterV
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             mImageUri = data.getData();
-            Picasso.with(this).load(mImageUri).fit().centerCrop().into(mImageView);
+            Picasso.get().load(mImageUri).fit().centerCrop().into(mImageView);
             imageUploaded = true;
         }
     }
