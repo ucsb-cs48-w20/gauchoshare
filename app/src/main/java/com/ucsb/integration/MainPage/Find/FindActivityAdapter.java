@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+import com.ucsb.integration.MainPage.Listing.Product;
 import com.ucsb.integration.R;
 
 import java.util.ArrayList;
@@ -18,10 +20,10 @@ import java.util.List;
 
 public class FindActivityAdapter extends RecyclerView.Adapter<FindActivityAdapter.Holderview> {
 
-    private List<Item> proList;
+    private List<Product> proList;
     private Context context;
 
-    public FindActivityAdapter(List<Item> proList, Context context) {
+    public FindActivityAdapter(List<Product> proList, Context context) {
         this.proList = proList;
         this.context = context;
     }
@@ -37,12 +39,14 @@ public class FindActivityAdapter extends RecyclerView.Adapter<FindActivityAdapte
 
     @Override
     public void onBindViewHolder(@NonNull Holderview holder, final int position) {
-        holder.v_name.setText(proList.get(position).getName());
-        holder.v_image.setImageResource(proList.get(position).getPhoto());
+        holder.v_name.setText(proList.get(position).getTitle());
+        holder.v_desc.setText((proList.get(position).getDescription()));
+        Picasso.get().load(proList.get(position).getImageUrl()).into(holder.v_image);
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                Toast.makeText(context, "Click on" + proList.get(position).getName(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Click on" + proList.get(position).getTitle(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -53,7 +57,7 @@ public class FindActivityAdapter extends RecyclerView.Adapter<FindActivityAdapte
         return proList.size();
     }
 
-    public void setfilter(List<Item> listitem){
+    public void setfilter(List<Product> listitem){
         proList = new ArrayList<>();
         proList.addAll(listitem);
         notifyDataSetChanged();
@@ -62,11 +66,14 @@ public class FindActivityAdapter extends RecyclerView.Adapter<FindActivityAdapte
     class Holderview extends RecyclerView.ViewHolder{
         ImageView v_image;
         TextView v_name;
+        TextView v_desc;
 
         Holderview(View itemview){
             super(itemview);
             v_image = itemview.findViewById(R.id.pro_image);
             v_name = itemview.findViewById(R.id.pro_title);
+            v_desc = itemview.findViewById(R.id.pro_desc);
+
         }
 
 

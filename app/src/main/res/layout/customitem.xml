@@ -27,6 +27,14 @@
             android:layout_toRightOf="@+id/pro_image"
             android:text="Title"
             android:textAppearance="?android:attr/textAppearanceSmall"/>
+        <TextView
+            android:id="@+id/pro_desc"
+            android:text="Description"
+            android:layout_width="280dp"
+            android:layout_height="45dp"
+            android:layout_toRightOf="@+id/pro_image"
+            android:layout_marginTop="30dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
