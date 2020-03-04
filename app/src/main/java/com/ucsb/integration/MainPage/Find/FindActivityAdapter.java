@@ -11,8 +11,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
+import com.ucsb.integration.MainPage.Listing.Product;
 import com.ucsb.integration.R;
 
 import java.util.ArrayList;
@@ -20,10 +20,10 @@ import java.util.List;
 
 public class FindActivityAdapter extends RecyclerView.Adapter<FindActivityAdapter.Holderview> {
 
-    private List<Listings> proList;
+    private List<Product> proList;
     private Context context;
 
-    public FindActivityAdapter(List<Listings> proList, Context context) {
+    public FindActivityAdapter(List<Product> proList, Context context) {
         this.proList = proList;
         this.context = context;
     }
@@ -57,7 +57,7 @@ public class FindActivityAdapter extends RecyclerView.Adapter<FindActivityAdapte
         return proList.size();
     }
 
-    public void setfilter(List<Listings> listitem){
+    public void setfilter(List<Product> listitem){
         proList = new ArrayList<>();
         proList.addAll(listitem);
         notifyDataSetChanged();
