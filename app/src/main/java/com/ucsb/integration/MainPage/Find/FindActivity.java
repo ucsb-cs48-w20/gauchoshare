@@ -3,8 +3,6 @@ package com.ucsb.integration.MainPage.Find;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,17 +17,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ucsb.integration.MainPage.Listing.Product;
 import com.ucsb.integration.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Locale.filter;
-
 public class FindActivity extends AppCompatActivity {
 
     RecyclerView listShow;
-    List<Listings> proList = new ArrayList<>();
+    List<Product> proList = new ArrayList<>();
     SearchView searchView;
 
     FindActivityAdapter adapter;
@@ -56,7 +53,7 @@ public class FindActivity extends AppCompatActivity {
                 if(dataSnapshot.exists()){
                     proList = new ArrayList<>();
                     for(DataSnapshot ds : dataSnapshot.getChildren()){
-                        proList.add(ds.getValue(Listings.class));
+                        proList.add(ds.getValue(Product.class));
 
                     }
                     adapter =  new FindActivityAdapter(proList, FindActivity.this);
@@ -100,7 +97,7 @@ public class FindActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                final  List<Listings> filtermodelist= filter(proList,newText);
+                final  List<Product> filtermodelist= filter(proList,newText);
                 adapter.setfilter(filtermodelist);
                 return true;
             }
@@ -108,11 +105,11 @@ public class FindActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    private List<Listings> filter(List<Listings> pl,String query)
+    private List<Product> filter(List<Product> pl,String query)
     {
         query=query.toLowerCase();
-        final List<Listings> filteredModeList=new ArrayList<>();
-        for (Listings model:pl)
+        final List<Product> filteredModeList=new ArrayList<>();
+        for (Product model:pl)
         {
             final String text=model.getTitle().toLowerCase();
             final String text1 = model.getDescription().toLowerCase();
