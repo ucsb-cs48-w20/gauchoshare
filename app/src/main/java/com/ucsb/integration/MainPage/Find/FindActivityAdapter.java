@@ -39,14 +39,19 @@ public class FindActivityAdapter extends RecyclerView.Adapter<FindActivityAdapte
 
     @Override
     public void onBindViewHolder(@NonNull Holderview holder, final int position) {
+        if (!proList.get(position).getSold()) {
+            holder.v_sold.setVisibility(View.INVISIBLE);
+        } else {
+            holder.v_sold.setVisibility(View.VISIBLE);
+        }
         holder.v_name.setText(proList.get(position).getTitle());
         holder.v_desc.setText((proList.get(position).getDescription()));
-        Picasso.get().load(proList.get(position).getImageUrl()).into(holder.v_image);
+        Picasso.get().load(proList.get(position).getImageURL()).into(holder.v_image);
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                Toast.makeText(context, "Click on" + proList.get(position).getTitle(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Click on " + proList.get(position).getTitle(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -67,13 +72,14 @@ public class FindActivityAdapter extends RecyclerView.Adapter<FindActivityAdapte
         ImageView v_image;
         TextView v_name;
         TextView v_desc;
+        ImageView v_sold;
 
         Holderview(View itemview){
             super(itemview);
             v_image = itemview.findViewById(R.id.pro_image);
             v_name = itemview.findViewById(R.id.pro_title);
             v_desc = itemview.findViewById(R.id.pro_desc);
-
+            v_sold = itemview.findViewById(R.id.pro_sold);
         }
 
 
