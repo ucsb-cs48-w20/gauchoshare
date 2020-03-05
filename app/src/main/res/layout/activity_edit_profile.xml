@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainPage.Profile.SetupActivity">
+    tools:context=".MainPage.Profile.EditProfileActivity">
 
     <RelativeLayout
         android:id="@+id/rellay1"
@@ -24,7 +24,7 @@
             android:background="@drawable/circle_border">
 
             <ImageView
-                android:id="@+id/setup_profile_image"
+                android:id="@+id/edit_profile_image"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginStart="9dp"
@@ -37,16 +37,15 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/default_user" />
         </RelativeLayout>
-
         <Button
-            android:id="@+id/button_choose_image"
+            android:id="@+id/edit_choose_image"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="45dp"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="6dp"
+            android:layout_marginBottom="4dp"
             android:text="Choose image" />
 
     </RelativeLayout>
@@ -78,12 +77,11 @@
                     android:textSize="13sp" />
 
                 <EditText
-                    android:id="@+id/setup_username"
+                    android:id="@+id/edit_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:hint="janedoe123"
                     android:inputType="textMultiLine"
                     android:padding="14dp" />
 
@@ -103,12 +101,11 @@
                     android:textSize="13sp" />
 
                 <EditText
-                    android:id="@+id/setup_full_name"
+                    android:id="@+id/edit_full_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:hint="Jane Doe"
                     android:inputType="textMultiLine"
                     android:padding="14dp" />
 
@@ -128,14 +125,12 @@
                     android:textSize="13sp" />
 
                 <EditText
-                    android:id="@+id/setup_phone_number"
+                    android:id="@+id/edit_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:hint="(888)888-8888"
-                    android:inputType="phone"
-                    android:digits="1234567890+()-"
+                    android:inputType="textMultiLine"
                     android:padding="14dp" />
             </LinearLayout>
 
@@ -143,7 +138,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -154,28 +148,36 @@
                     android:textSize="13sp" />
 
                 <EditText
-                    android:id="@+id/setup_venmo"
+                    android:id="@+id/edit_venmo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:hint="\@JaneDoe123"
                     android:inputType="textMultiLine"
                     android:padding="14dp" />
 
             </LinearLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
                 <Button
-                    android:id="@+id/setup_information_button"
+                    android:id="@+id/edit_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginBottom="43dp"
-                    android:padding="14dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Cancel" />
+
+                <Button
+                    android:id="@+id/edit_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:text="Save" />
-            </RelativeLayout>
+            </LinearLayout>
 
         </LinearLayout>
 
