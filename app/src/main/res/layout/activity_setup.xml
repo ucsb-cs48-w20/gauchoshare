@@ -37,6 +37,7 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/default_user" />
         </RelativeLayout>
+
         <Button
             android:id="@+id/button_choose_image"
             android:layout_width="140dp"
@@ -45,7 +46,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginStart="45dp"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="6dp"
             android:text="Choose image" />
 
     </RelativeLayout>
@@ -122,7 +123,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Phone Number"
+                    android:text="Phone Number (Optional)"
                     android:textColor="@color/headings"
                     android:textSize="13sp" />
 
@@ -132,8 +133,9 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:hint="(888)-888-8888"
-                    android:inputType="textMultiLine"
+                    android:hint="(888)888-8888"
+                    android:inputType="phone"
+                    android:digits="1234567890+()-"
                     android:padding="14dp" />
             </LinearLayout>
 

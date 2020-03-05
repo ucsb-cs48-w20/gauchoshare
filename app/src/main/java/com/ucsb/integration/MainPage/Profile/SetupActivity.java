@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.TextUtils;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -16,9 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -37,11 +37,10 @@ public class SetupActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
-    private EditText UserName, FullName, Email, PhoneNumber, Venmo;
+    private EditText UserName, FullName, PhoneNumber, Venmo;
     private Button SaveInformationbutton;
     private Button mButtonChooseImage;
     private StorageTask mUploadTask;
-    private boolean imageUploaded;
     private Uri mImageUri;
     private ImageView mImageView;
 
@@ -52,9 +51,6 @@ public class SetupActivity extends AppCompatActivity {
 
     String currentUserID;
     String currentUserEmail;
-
-    private static final String TAG = "your activity name";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,11 +69,10 @@ public class SetupActivity extends AppCompatActivity {
         mImageView = findViewById(R.id.setup_profile_image);
 
 
-        imageUploaded = false;
-
         UserName = (EditText) findViewById(R.id.setup_username);
         FullName = (EditText) findViewById(R.id.setup_full_name);
         PhoneNumber = (EditText) findViewById(R.id.setup_phone_number);
+        PhoneNumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         Venmo = (EditText) findViewById(R.id.setup_venmo);
 
         SaveInformationbutton = (Button) findViewById(R.id.setup_information_button);
@@ -117,7 +112,6 @@ public class SetupActivity extends AppCompatActivity {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             mImageUri = data.getData();
             Picasso.get().load(mImageUri).transform(new CircleTransform()).into(mImageView);
-            imageUploaded = true;
         }
     }
 
@@ -132,40 +126,45 @@ public class SetupActivity extends AppCompatActivity {
         }
         else if (TextUtils.isEmpty(fullname)) {
             Toast.makeText(this, "Please provide your Full Name...", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty(phonenumber)) {
-            Toast.makeText(this, "Please provide your Phone Number...", Toast.LENGTH_SHORT).show();
         } else {
-            HashMap<String, Object> userMap = new HashMap<>();
+            final HashMap<String, Object> userMap = new HashMap<>();
             userMap.put("username", username);
             userMap.put("fullname", fullname);
             userMap.put("email", currentUserEmail);
-            userMap.put("phonenumber", phonenumber);
             userMap.put("id", currentUserID);
-            userMap.put("imageURL", "default");
+            userMap.put("imageURL", "Not provided");
             if (TextUtils.isEmpty(venmo)) {
                 userMap.put("venmo", "Not provided");
             } else {
                 userMap.put("venmo", venmo);
             }
-            if (mImageUri != null) {
-                StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(mImageUri));
-
-                mUploadTask = fileReference.putFile(mImageUri)
-                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                UsersRef.child("imageURL").setValue(mImageUri.toString());
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(SetupActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+            if (TextUtils.isEmpty(phonenumber)) {
+                userMap.put("phonenumber", "Not provided");
             } else {
-                UsersRef.child(currentUserID).child("imageURL").setValue("None");
+                userMap.put("phonenumber", phonenumber);
+            }
+            if (mImageUri != null) {
+                mStorageRef.putFile(mImageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                    @Override
+                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                        if (!task.isSuccessful()) {
+                            throw task.getException();
+                        }
+                        return mStorageRef.getDownloadUrl();
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        if (task.isSuccessful()) {
+                            Uri downloadUri = task.getResult();
+                            UsersRef.child("imageURL").setValue(downloadUri.toString());
+                        } else {
+                            Toast.makeText(SetupActivity.this, "Upload failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            } else {
+                UsersRef.child("imageURL").setValue("Not provided");
             }
             UsersRef.updateChildren(userMap).addOnCompleteListener((new OnCompleteListener<Void>() {
                 @Override
