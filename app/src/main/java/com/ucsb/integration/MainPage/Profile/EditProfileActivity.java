@@ -47,6 +47,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private EditText UserName, FullName, PhoneNumber, Venmo;
     private Button SaveInformationbutton;
     private Button mButtonChooseImage;
+    private Button mButtonCancel;
     private StorageTask mUploadTask;
     private Uri mImageUri;
     private ImageView mImageView;
@@ -70,6 +71,7 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         mButtonChooseImage = findViewById(R.id.edit_choose_image);
+        mButtonCancel = findViewById(R.id.edit_cancel);
 
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
@@ -118,6 +120,16 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openFileChooser();
+            }
+        });
+
+        mButtonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(EditProfileActivity.this, MainActivity.class);
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(mainIntent);
+                finish();
             }
         });
 

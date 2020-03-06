@@ -13,7 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainPage.Profile.EditProfileActivity"></activity>
+        <activity
+            android:name=".MainPage.Listing.ViewListingActivity"
+            android:label="@string/title_activity_view_listing"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar"
+            android:parentActivityName=".MainPage.Find.FindActivity"></activity>
+        <activity android:name=".MainPage.Profile.EditProfileActivity" />
         <activity android:name=".MainPage.Listing.UserhisActivity" />
         <activity android:name=".MainPage.Listing.DirectionActivity" />
         <activity android:name=".MainPage.Listing.CreateListingActivity" />

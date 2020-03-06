@@ -151,7 +151,7 @@ public class CreateListingActivity extends AppCompatActivity implements AdapterV
                     }
                 });
             } else {
-                mDatabaseRef.child("imageURL").setValue("Not provided");
+                mDatabaseRef.child(listingId).child("imageURL").setValue("Not provided");
             }
             Toast.makeText(CreateListingActivity.this, "Listing successfully created!", Toast.LENGTH_SHORT).show();
             SendUserToMainActivity();
