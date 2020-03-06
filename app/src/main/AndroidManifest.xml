@@ -64,16 +64,8 @@
             android:label="@string/title_activity_find"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Login.FacebookLoginActivity"
-            android:label="@string/title_activity_facebook_login"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".Login.BasicLoginActivity"
             android:label="@string/title_activity_basic_login"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Login.GoogleLoginActivity"
-            android:label="@string/title_activity_google_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
