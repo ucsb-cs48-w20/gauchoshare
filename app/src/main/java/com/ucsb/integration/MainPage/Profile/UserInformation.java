@@ -1,6 +1,6 @@
 package com.ucsb.integration.MainPage.Profile;
 
-public class UserInformation {
+public class UserInformation implements Comparable<UserInformation> {
     public String username;
     public String fullname;
     public String email;
@@ -62,4 +62,9 @@ public class UserInformation {
     public void setImageURL(String imageURL) { this.imageURL = imageURL; }
 
     public void setVenmo(String venmo) {this.venmo = venmo;}
+
+    @Override
+    public int compareTo(UserInformation user) {
+        return this.getUsername().toLowerCase().compareTo(user.getUsername().toLowerCase());
+    }
 }

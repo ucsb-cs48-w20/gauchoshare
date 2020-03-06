@@ -27,6 +27,7 @@ import com.ucsb.integration.R;
 import com.ucsb.integration.adapter.UserAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class UsersFragment extends Fragment {
@@ -91,6 +92,7 @@ public class UsersFragment extends Fragment {
                         mUsers.add(user);
                     }
                 }
+                Collections.sort(mUsers);
                 userAdapter = new UserAdapter(getContext(), mUsers);
                 recyclerView.setAdapter(userAdapter);
             }
@@ -120,6 +122,7 @@ public class UsersFragment extends Fragment {
                             mUsers.add(user);
                         }
                     }
+                    Collections.sort(mUsers);
                     userAdapter = new UserAdapter(getContext(), mUsers);
                     recyclerView.setAdapter(userAdapter);
                 }

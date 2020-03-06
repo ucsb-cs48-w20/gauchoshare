@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -59,7 +60,7 @@ public class MessagePersonActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("MessagePersonActivity");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //TRY MESSING WITH THIS LATER TO CHECK STUFF
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,13 +105,12 @@ public class MessagePersonActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 UserInformation user = dataSnapshot.getValue(UserInformation.class);
-                /*username.setText(user.getUsername());
-                if (user.getImageUrl() == null || user.getImageUrl().equals("default")) { //had to change to null
-                    profile_image.setImageResource(R.mipmap.ic_launcher);
+                username.setText(user.getUsername());
+                if (user.getImageURL() == null || user.getImageURL().equals("Not provided")) { //had to change to null
+                    profile_image.setImageResource(R.drawable.default_user);
                 } else {
-                    //and this
-                    Glide.with(getApplicationContext()).load(user.getImageUrl()).into(profile_image);
-                }*/
+                    Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
+                }
 
                 readMessages(fuser.getUid(), userid, user.getImageURL());
             }

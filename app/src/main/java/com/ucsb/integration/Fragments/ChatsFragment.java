@@ -120,4 +120,40 @@ public class ChatsFragment extends Fragment {
             }
         });
     }
+
+    /*private void readChats() {
+        mUsers = new ArrayList<>();
+
+        reference = FirebaseDatabase.getInstance().getReference("Chats");
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mUsers.clear();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Chat chat = snapshot.getValue(Chat.class);
+
+                    for (String id : usersList) {
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+        for (ListIterator<UserInformation> iter = mUsers.listIterator(mUsers.size()); iter.hasPrevious();) {
+            if (!user.get().equals(iter.previous().getId())) {
+                if (!mUsers.contains(user))
+                    iter.add(user);
+            }
+        /               IGNORE THIS I AM CURRENTLY TESTING WITH THIS
+    }*/
 }
