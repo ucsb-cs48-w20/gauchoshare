@@ -4,20 +4,22 @@ public class Product {
     private String category;
     private String createdBy;
     private String description;
-    private String imageUrl;
+    private String imageURL;
     private String price;
     private String title;
+    private Boolean sold;
 
     public Product() {
     }
 
-    public Product(String category, String createdBy, String description, String imageUrl, String price, String title) {
+    public Product(String category, String createdBy, String description, String imageURL, String price, String title, Boolean sold) {
         this.category = category;
         this.createdBy = createdBy;
         this.description = description;
-        this.imageUrl = imageUrl;
+        this.imageURL = imageURL;
         this.price = price;
         this.title = title;
+        this.sold = sold;
     }
 
     public String getCategory() {
@@ -44,12 +46,12 @@ public class Product {
         this.description = description;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public String getPrice() {
@@ -66,5 +68,13 @@ public class Product {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Boolean getSold() {
+        return sold;
+    }
+
+    public void setSold(Boolean sold) {
+        this.sold = sold;
     }
 }

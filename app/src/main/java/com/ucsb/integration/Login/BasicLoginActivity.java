@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.ucsb.integration.MainActivity;
+import com.ucsb.integration.MainPage.Profile.SetupActivity;
 import com.ucsb.integration.R;
 
 import androidx.annotation.NonNull;
@@ -80,7 +81,7 @@ public class BasicLoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(BasicLoginActivity.this,"sign up successful",Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(BasicLoginActivity.this, MainActivity.class));
+                            startActivity(new Intent(BasicLoginActivity.this, SetupActivity.class));
                         }
                         else{
                             Toast.makeText(BasicLoginActivity.this,"failed to sign up",Toast.LENGTH_LONG).show();
@@ -98,7 +99,7 @@ public class BasicLoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(BasicLoginActivity.this,"log in successful",Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(BasicLoginActivity.this,MainActivity.class));
+                            startActivity(new Intent(BasicLoginActivity.this, MainActivity.class));
                         }
                         else{
                             Toast.makeText(BasicLoginActivity.this,"failed to log in",Toast.LENGTH_LONG).show();
@@ -149,7 +150,6 @@ public class BasicLoginActivity extends AppCompatActivity {
             Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
-
     }
 
     private void handleSignInResult (Task<GoogleSignInAccount> completeTask){

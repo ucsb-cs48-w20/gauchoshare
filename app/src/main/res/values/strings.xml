@@ -46,4 +46,7 @@
         <item>Video Games</item>
         <item>Miscellaneous</item>
     </string-array>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="title_activity_view_listing">ViewListingActivity</string>
 </resources>
