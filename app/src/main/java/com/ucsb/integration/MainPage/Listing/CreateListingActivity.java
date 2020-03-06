@@ -19,8 +19,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -126,25 +127,31 @@ public class CreateListingActivity extends AppCompatActivity implements AdapterV
             mDatabaseRef.child(listingId).child("price").setValue(price);
             mDatabaseRef.child(listingId).child("createdBy").setValue(currentUserID);
             mDatabaseRef.child(listingId).child("category").setValue(category);
+            mDatabaseRef.child(listingId).child("sold").setValue(false);
 
             if (mImageUri != null) {
-                StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(mImageUri));
-
-                mUploadTask = fileReference.putFile(mImageUri)
-                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                mDatabaseRef.child(listingId).child("imageUrl").setValue(mImageUri.toString());
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(CreateListingActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                final StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(mImageUri));
+                fileReference.putFile(mImageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                    @Override
+                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                        if (!task.isSuccessful()) {
+                            throw task.getException();
+                        }
+                        return fileReference.getDownloadUrl();
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        if (task.isSuccessful()) {
+                            Uri downloadUri = task.getResult();
+                            mDatabaseRef.child(listingId).child("imageURL").setValue(downloadUri.toString());
+                        } else {
+                            Toast.makeText(CreateListingActivity.this, "Upload failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             } else {
-                mDatabaseRef.child(listingId).child("imageUrl").setValue("None");
+                mDatabaseRef.child(listingId).child("imageURL").setValue("Not provided");
             }
             Toast.makeText(CreateListingActivity.this, "Listing successfully created!", Toast.LENGTH_SHORT).show();
             SendUserToMainActivity();

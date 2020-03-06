@@ -55,6 +55,7 @@
                     android:layout_height="match_parent"
                     android:fontFamily="sans-serif-light"
                     android:hint="Price"
+                    android:inputType=""
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
