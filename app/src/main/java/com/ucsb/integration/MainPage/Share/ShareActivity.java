@@ -25,7 +25,7 @@ public class ShareActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        sItem = (Button)findViewById(R.id.button_upload_image);
+        sItem = (Button)findViewById(R.id.button);
         sItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
