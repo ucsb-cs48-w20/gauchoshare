@@ -17,7 +17,8 @@
         <activity android:name=".MainPage.Listing.UserhisActivity" />
         <activity android:name=".MainPage.Listing.DirectionActivity" />
         <activity android:name=".MainPage.Listing.CreateListingActivity" />
-        <activity android:name=".MainPage.Message.MessagePersonActivity" />
+        <activity android:name=".MainPage.Message.MessagePersonActivity"
+            android:parentActivityName=".MainPage.Message.MessageActivity"/>
         <activity android:name=".MainPage.Profile.SetupActivity" />
         <activity android:name=".MainPage.Share.ListHistory" />
         <activity android:name=".MainPage.ShowList.item" />

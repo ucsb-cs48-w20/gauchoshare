@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.ucsb.integration.MainActivity;
+import com.ucsb.integration.MainPage.Profile.SetupActivity;
 import com.ucsb.integration.R;
 
 import java.util.HashMap;
@@ -133,13 +134,13 @@ public class BasicLoginActivity extends AppCompatActivity {
                             HashMap<String, String> hashMap = new HashMap<>();
                             hashMap.put("id", userid);
                             hashMap.put("email", email);
-                            hashMap.put("imageURL", "default");
+                            hashMap.put("imageURL", "Not provided");
 
                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Intent intent = new Intent(BasicLoginActivity.this, MainActivity.class);
+                                        Intent intent = new Intent(BasicLoginActivity.this, SetupActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(intent);
                                         finish();

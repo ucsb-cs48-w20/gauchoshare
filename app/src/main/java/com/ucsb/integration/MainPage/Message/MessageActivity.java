@@ -57,7 +57,7 @@ public class MessageActivity extends AppCompatActivity {
                 //UserInformation user = dataSnapshot.getValue(UserInformation.class);
                 /*username.setText(user.getUsername());
                 username.setText("MessageActivity"); //change later CHANGE THE IMAGEURL TO STOP CRASHING
-                if (user.getImageUrl() == null || user.getImageUrl().equals("default")) { //needed the null to stop crashing
+                if (user.getImageUrl() == null || user.getImageUrl().equals("Not provided")) { //needed the null to stop crashing
                     profile_image.setImageResource(R.mipmap.ic_launcher);
                 } else {
 
