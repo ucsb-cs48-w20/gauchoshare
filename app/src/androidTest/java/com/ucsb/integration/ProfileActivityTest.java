@@ -126,7 +126,7 @@ public class ProfileActivityTest {
                         isDisplayed()));
         appCompatEditText5.perform(replaceText(Integer.toString(randomNum)), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText6 = onView(
+        /*ViewInteraction appCompatEditText6 = onView(
                 allOf(withId(R.id.setup_email),
                         childAtPosition(
                                 childAtPosition(
@@ -134,7 +134,7 @@ public class ProfileActivityTest {
                                         0),
                                 3),
                         isDisplayed()));
-        appCompatEditText6.perform(replaceText(randomEmail), closeSoftKeyboard());
+        appCompatEditText6.perform(replaceText(randomEmail), closeSoftKeyboard());*/
 
         TimeUnit.SECONDS.sleep(3);
 

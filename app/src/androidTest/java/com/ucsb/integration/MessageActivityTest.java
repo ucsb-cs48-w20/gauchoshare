@@ -93,7 +93,7 @@ public class MessageActivityTest {
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                3),
+                                0),
                         isDisplayed()));
         appCompatButton3.perform(click());
 
