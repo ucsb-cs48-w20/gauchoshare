@@ -20,6 +20,7 @@ public class userMap extends FragmentActivity implements OnMapReadyCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_map);
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -27,10 +28,12 @@ public class userMap extends FragmentActivity implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        //mMap = googleMap;
+        //LatLng TutorialsPoint = new LatLng(21, 57);
+        //mMap.addMarker(new
+        //        MarkerOptions().position(TutorialsPoint).title("Tutorialspoint.com"));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(TutorialsPoint));
         mMap = googleMap;
-        LatLng TutorialsPoint = new LatLng(21, 57);
-        mMap.addMarker(new
-                MarkerOptions().position(TutorialsPoint).title("Tutorialspoint.com"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(TutorialsPoint));
+
     }
 }
