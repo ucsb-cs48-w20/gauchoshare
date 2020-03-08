@@ -49,4 +49,5 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="title_activity_view_listing">ViewListingActivity</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

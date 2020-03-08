@@ -33,7 +33,7 @@ public class ProfileActivity extends AppCompatActivity {
     Map<String, Object> data;
     private ImageView mImageView;
     private Uri mImageUri;
-    private Button mEditProfile;
+    private Button mEditProfile, mGoogleActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,8 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         mEditProfile = (Button) findViewById(R.id.btn_edit_profile);
+
+        mGoogleActivity = (Button) findViewById(R.id.btn_google_map);
 
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
@@ -85,8 +87,22 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        mGoogleActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SendUserToMapsActivity();
+            }
+        });
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+    }
+
+    private void SendUserToMapsActivity() {
+        Intent mainIntent = new Intent(ProfileActivity.this, MapsActivity.class);
+        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(mainIntent);
+        finish();
     }
 
     private void SendUserToEditProfileActivity() {
