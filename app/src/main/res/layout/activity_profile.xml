@@ -73,7 +73,8 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="218dp"
             android:gravity="center"
-            android:text="Edit Profile" />
+            android:text="Edit Profile"
+            android:visibility="invisible"/>
 
         <LinearLayout
             android:layout_width="match_parent"

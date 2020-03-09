@@ -59,16 +59,19 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 data = (Map<String, Object>) dataSnapshot.getValue();
-                    userNameView.setText(data.get("username").toString());
-                    fullNameView.setText(data.get("fullname").toString());
-                    emailView.setText(data.get("email").toString());
-                    phoneNumberView.setText(data.get("phonenumber").toString());
-                    venmo.setText(data.get("venmo").toString());
-                String imageURL = data.get("imageURL").toString();
+                userNameView.setText(getIntent().getStringExtra("username"));
+                fullNameView.setText(getIntent().getStringExtra("fullname"));
+                emailView.setText(getIntent().getStringExtra("email"));
+                phoneNumberView.setText(getIntent().getStringExtra("phonenumber"));
+                venmo.setText(getIntent().getStringExtra("venmo"));
+                String imageURL = getIntent().getStringExtra("imageURL");
                 Log.d("IMAGE URL LINK: ", imageURL);
                 if (!imageURL.equals("Not provided")) {
                     Log.d("IT WORKED: ", imageURL);
                     Picasso.get().load(imageURL).transform(new CircleTransform()).into(mImageView);
+                }
+                if (currentUserID.equals(getIntent().getStringExtra("id"))) {
+                    mEditProfile.setVisibility(View.VISIBLE);
                 }
             }
 

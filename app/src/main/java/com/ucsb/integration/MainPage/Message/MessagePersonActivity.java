@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ucsb.integration.MainPage.Profile.ProfileActivity;
 import com.ucsb.integration.MainPage.Profile.UserInformation;
 import com.ucsb.integration.R;
 import com.ucsb.integration.adapter.MessageAdapter;
@@ -29,6 +30,7 @@ import com.ucsb.integration.adapter.MessageAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -94,6 +96,51 @@ public class MessagePersonActivity extends AppCompatActivity {
                     Toast.makeText(MessagePersonActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
                 }
                 text_send.setText("");
+            }
+        });
+
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String[] receiverUID = {""};
+                DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Chats");
+                reference1.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Chat chat = snapshot.getValue(Chat.class);
+                            if (chat.getSender().equals(userid))
+                                receiverUID[0] = chat.getSender();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+                DatabaseReference reference2 = reference1.getParent().child("Users").child(receiverUID[0]);
+                reference2.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Map <String, Object> data = (Map<String, Object>) dataSnapshot.child(receiverUID[0]).getValue();
+                        Intent intent = new Intent(MessagePersonActivity.this, ProfileActivity.class);
+                        intent.putExtra("username", data.get("username").toString());
+                        intent.putExtra("fullname", data.get("fullname").toString());
+                        intent.putExtra("email", data.get("email").toString());
+                        intent.putExtra("phonenumber", data.get("phonenumber").toString());
+                        intent.putExtra("id", data.get("id").toString());
+                        intent.putExtra("imageURL", data.get("imageURL").toString());
+                        intent.putExtra("venmo", data.get("venmo").toString());
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 
