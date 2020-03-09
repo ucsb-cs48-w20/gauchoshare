@@ -99,7 +99,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     PhoneNumber.setText(data.get("phonenumber").toString());
                 }
                 if (!data.get("venmo").toString().equals("Not provided")) {
-                    PhoneNumber.setText(data.get("venmo").toString());
+                    Venmo.setText(data.get("venmo").toString());
                 }
                 currentImageURL = data.get("imageURL").toString();
 
