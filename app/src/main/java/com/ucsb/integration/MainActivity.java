@@ -3,11 +3,11 @@ package com.ucsb.integration;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -15,18 +15,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ucsb.integration.MainPage.Find.FindActivity;
-import com.ucsb.integration.MainPage.Listing.DirectionActivity;
+import com.ucsb.integration.MainPage.Listing.CreateListingActivity;
 import com.ucsb.integration.MainPage.Message.MessageActivity;
 import com.ucsb.integration.MainPage.Profile.ProfileActivity;
+import com.ucsb.integration.MainPage.Share.ListHistory;
 
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button find;
-    Button share;
-    Button message;
-    Button profile;
+    MaterialButton find;
+    MaterialButton createListing;
+    MaterialButton message;
+    MaterialButton profile;
+    MaterialButton myListings;
     private FirebaseAuth mAuth;
     private DatabaseReference UsersRef;
     private FirebaseDatabase database;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
@@ -47,14 +50,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, FindActivity.class));
-            }
-        });
-
-        share = findViewById(R.id.share);
-        share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, DirectionActivity.class));
             }
         });
 
@@ -93,8 +88,22 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
+        createListing = findViewById(R.id.create_listing);
+        createListing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, CreateListingActivity.class));
+            }
+        });
+
+        myListings = findViewById(R.id.my_listings);
+        myListings.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            startActivity(new Intent(MainActivity.this, ListHistory.class));
+                                        }
+                                    }
+        );
     }
-
-    //getSupportActionBar().hide();
-
 }
