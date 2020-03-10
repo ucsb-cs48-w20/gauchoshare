@@ -1,6 +1,7 @@
 package com.ucsb.integration.MainPage.Listing;
 
 public class Product {
+    private String listingId;
     private String category;
     private String createdBy;
     private String description;
@@ -12,7 +13,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(String category, String createdBy, String description, String imageURL, String price, String title, Boolean sold) {
+    public Product(String category, String createdBy, String description, String imageURL, String price, String title, String listingId , Boolean sold) {
         this.category = category;
         this.createdBy = createdBy;
         this.description = description;
@@ -20,10 +21,20 @@ public class Product {
         this.price = price;
         this.title = title;
         this.sold = sold;
+        this.listingId=listingId;
+
+    }
+
+    public String getListingId() {
+        return listingId;
     }
 
     public String getCategory() {
         return category;
+    }
+
+    public void setListingId(String listingId) {
+        this.listingId = listingId;
     }
 
     public void setCategory(String category) {

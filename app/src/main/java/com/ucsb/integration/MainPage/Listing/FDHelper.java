@@ -45,8 +45,11 @@ public class FDHelper {
                 for(DataSnapshot keyNode : dataSnapshot.getChildren()){
                     keys.add(keyNode.getKey());
                     Product pro=keyNode.getValue(Product.class);
+
                     if(pro.getCreatedBy().startsWith(currentUserID)){
-                        products.add(pro);}
+                        pro.setListingId(keyNode.getKey());
+                        products.add(pro);
+                    }
                 }
                 dataStatus.DataIsLoaded(products, keys);
             }

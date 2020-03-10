@@ -170,6 +170,7 @@ public class CreateListingActivity extends AppCompatActivity implements AdapterV
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
+
     private void SendUserToMainActivity() {
         Intent mainIntent = new Intent(CreateListingActivity.this, MainActivity.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
