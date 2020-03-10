@@ -21,6 +21,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
 import com.ucsb.integration.MainPage.Message.MessagePersonActivity;
 import com.ucsb.integration.MainPage.Profile.CircleTransform;
+import com.ucsb.integration.MainPage.Profile.ProfileActivity;
 import com.ucsb.integration.R;
 
 import java.util.Map;
@@ -118,6 +119,58 @@ public class ViewListingActivity extends AppCompatActivity {
                 intent.putExtra("userid", userID);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        ProfileImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Map <String, Object> data = (Map<String, Object>) dataSnapshot.getValue();
+                        Intent intent = new Intent(ViewListingActivity.this, ProfileActivity.class);
+                        intent.putExtra("username", data.get("username").toString());
+                        intent.putExtra("fullname", data.get("fullname").toString());
+                        intent.putExtra("email", data.get("email").toString());
+                        intent.putExtra("phonenumber", data.get("phonenumber").toString());
+                        intent.putExtra("id", data.get("id").toString());
+                        intent.putExtra("imageURL", data.get("imageURL").toString());
+                        intent.putExtra("venmo", data.get("venmo").toString());
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+
+        NameView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Map <String, Object> data = (Map<String, Object>) dataSnapshot.getValue();
+                        Intent intent = new Intent(ViewListingActivity.this, ProfileActivity.class);
+                        intent.putExtra("username", data.get("username").toString());
+                        intent.putExtra("fullname", data.get("fullname").toString());
+                        intent.putExtra("email", data.get("email").toString());
+                        intent.putExtra("phonenumber", data.get("phonenumber").toString());
+                        intent.putExtra("id", data.get("id").toString());
+                        intent.putExtra("imageURL", data.get("imageURL").toString());
+                        intent.putExtra("venmo", data.get("venmo").toString());
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
     }
