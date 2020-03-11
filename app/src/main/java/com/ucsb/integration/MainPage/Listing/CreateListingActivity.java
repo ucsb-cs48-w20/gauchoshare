@@ -57,7 +57,7 @@ public class CreateListingActivity extends AppCompatActivity implements AdapterV
 
     private StorageTask mUploadTask;
     private boolean imageUploaded;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,10 +119,11 @@ public class CreateListingActivity extends AppCompatActivity implements AdapterV
         else {
             final String listingId = mDatabaseRef.push().getKey(); //generates random key
             if (TextUtils.isEmpty(description)) {
-                mDatabaseRef.child(listingId).child("description").setValue("None");
+                mDatabaseRef.child(listingId).child("description").setValue("Not provided");
             } else {
                 mDatabaseRef.child(listingId).child("description").setValue(description);
             }
+            mDatabaseRef.child(listingId).child("id").setValue(listingId);
             mDatabaseRef.child(listingId).child("title").setValue(title);
             mDatabaseRef.child(listingId).child("price").setValue(price);
             mDatabaseRef.child(listingId).child("createdBy").setValue(currentUserID);
@@ -183,7 +184,7 @@ public class CreateListingActivity extends AppCompatActivity implements AdapterV
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             mImageUri = data.getData();
-            Picasso.get().load(mImageUri).fit().centerCrop().into(mImageView);
+            Picasso.get().load(mImageUri).fit().into(mImageView);
             imageUploaded = true;
         }
     }

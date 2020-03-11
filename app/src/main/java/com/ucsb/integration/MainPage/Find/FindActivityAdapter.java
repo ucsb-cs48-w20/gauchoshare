@@ -58,6 +58,8 @@ public class FindActivityAdapter extends RecyclerView.Adapter<FindActivityAdapte
                     intent.putExtra("price", proList.get(position).getPrice());
                     intent.putExtra("description", proList.get(position).getDescription());
                     intent.putExtra("listingImageURL", proList.get(position).getImageURL());
+                    intent.putExtra("category", proList.get(position).getCategory());
+                    intent.putExtra("listingID", proList.get(position).getId());
                     context.startActivity(intent);
                 }
             });
