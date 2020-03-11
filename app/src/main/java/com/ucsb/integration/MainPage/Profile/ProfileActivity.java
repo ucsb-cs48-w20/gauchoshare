@@ -1,7 +1,7 @@
 package com.ucsb.integration.MainPage.Profile;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,14 +32,17 @@ public class ProfileActivity extends AppCompatActivity {
     String currentUserID;
     Map<String, Object> data;
     private ImageView mImageView;
-    private Uri mImageUri;
     private Button mEditProfile;
+
+    boolean onProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         data = new HashMap<>();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        onProfile = false;
 
         mEditProfile = (Button) findViewById(R.id.btn_edit_profile);
 
@@ -59,6 +62,9 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 data = (Map<String, Object>) dataSnapshot.getValue();
+                if (!data.get("id").equals(currentUserID) || onProfile)
+                    return;
+                onProfile = true;
                 userNameView.setText(getIntent().getStringExtra("username"));
                 fullNameView.setText(getIntent().getStringExtra("fullname"));
                 emailView.setText(getIntent().getStringExtra("email"));
@@ -96,6 +102,15 @@ public class ProfileActivity extends AppCompatActivity {
         Intent mainIntent = new Intent(ProfileActivity.this, EditProfileActivity.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        onProfile = false;
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("hasBackPressed", true);
+        setResult(Activity.RESULT_OK, returnIntent);
         finish();
     }
 }

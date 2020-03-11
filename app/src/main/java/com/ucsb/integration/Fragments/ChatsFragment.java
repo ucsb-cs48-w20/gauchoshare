@@ -24,6 +24,7 @@ import com.ucsb.integration.R;
 import com.ucsb.integration.adapter.UserAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -92,15 +93,12 @@ public class ChatsFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     UserInformation user = snapshot.getValue(UserInformation.class);
 
-                    //display 1 user from chats
                     for (String id : usersList) {
                         if (user.getId() != null && user.getId().equals(id)) {
                             if (mUsers.size() != 0) {
-                                //for (User user1 : mUsers) {
                                 for (ListIterator<UserInformation> iter = mUsers.listIterator(); iter.hasNext(); ) {
                                     if (!user.getId().equals(iter.next().getId())) {
                                         if (!mUsers.contains(user))
-                                            //mUsers.add(user);
                                             iter.add(user);
                                     }
                                 }
@@ -110,6 +108,7 @@ public class ChatsFragment extends Fragment {
                         }
                     }
                 }
+                Collections.sort(mUsers);
                 userAdapter = new UserAdapter(getContext(), mUsers);
                 recyclerView.setAdapter(userAdapter);
             }
@@ -120,40 +119,4 @@ public class ChatsFragment extends Fragment {
             }
         });
     }
-
-    /*private void readChats() {
-        mUsers = new ArrayList<>();
-
-        reference = FirebaseDatabase.getInstance().getReference("Chats");
-
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mUsers.clear();
-
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Chat chat = snapshot.getValue(Chat.class);
-
-                    for (String id : usersList) {
-
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-
-        for (ListIterator<UserInformation> iter = mUsers.listIterator(mUsers.size()); iter.hasPrevious();) {
-            if (!user.get().equals(iter.previous().getId())) {
-                if (!mUsers.contains(user))
-                    iter.add(user);
-            }
-        /               IGNORE THIS I AM CURRENTLY TESTING WITH THIS
-    }*/
 }

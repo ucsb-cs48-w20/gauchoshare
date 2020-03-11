@@ -123,12 +123,7 @@ public class UsersFragment extends Fragment {
                             mUsers.add(user);
                         }
                     }
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        public void run() {
-                            Collections.sort(mUsers);
-                        }
-                    }, 1000);
+                    Collections.sort(mUsers);
                     userAdapter = new UserAdapter(getContext(), mUsers);
                     recyclerView.setAdapter(userAdapter);
                 }
