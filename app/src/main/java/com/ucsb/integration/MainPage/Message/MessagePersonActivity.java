@@ -1,5 +1,6 @@
 package com.ucsb.integration.MainPage.Message;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -54,8 +55,11 @@ public class MessagePersonActivity extends AppCompatActivity {
 
     ValueEventListener seenListener;
 
+    boolean clickedToolbar = false;
+    boolean changeInDatabase;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_person);
 
@@ -86,6 +90,9 @@ public class MessagePersonActivity extends AppCompatActivity {
         final String userid = intent.getStringExtra("userid");
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
+        final String [] receiverData = new String[6];
+        changeInDatabase = false;
+
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,32 +106,71 @@ public class MessagePersonActivity extends AppCompatActivity {
             }
         });
 
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+        //.child(userid);
+        //CURRENTLY THIS CAUSES IT TO CRASH BECAUSE OF THE ID PROBLEM, WILL FIX LATER
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (clickedToolbar)
+                    return;
+                UserInformation user = dataSnapshot.child(userid).getValue(UserInformation.class); //use this to set values
+                username.setText(user.getUsername());
+                if (user.getImageURL() == null || user.getImageURL().equals("Not provided")) { //had to change to null
+                    profile_image.setImageResource(R.drawable.default_user);
+                } else {
+                    Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
+                }
+
+                if (!clickedToolbar) {
+                    receiverData[0] = user.getEmail();
+                    receiverData[1] = user.getFullname();
+                    receiverData[2] = user.getImageURL();
+                    receiverData[3] = user.getPhonenumber();
+                    receiverData[4] = user.getUsername();
+                    receiverData[5] = user.getVenmo();
+                }
+
+                readMessages(fuser.getUid(), userid, user.getImageURL());
+                changeInDatabase = true;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String[] receiverUID = {""};
-                DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Chats");
+                changeInDatabase = false;
+
+                DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("Users").child(userid);
+                //DatabaseReference reference2 = reference1.getParent().child("Users").child(receiverUID[0]);
                 reference1.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            Chat chat = snapshot.getValue(Chat.class);
-                            if (chat.getSender().equals(userid))
-                                receiverUID[0] = chat.getSender();
+                        if (clickedToolbar)
+                            return;
+                        if (changeInDatabase) {
+                            changeInDatabase = !changeInDatabase;
+                            return;
                         }
-                    }
+                        //Map <String, Object> data = (Map<String, Object>) dataSnapshot.child(receiverUID[0]).getValue();
+                        Map <String, Object> data = (Map<String, Object>) dataSnapshot.getValue();
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        if (!userid.equals(fuser.getUid()) &&
+                                (!(data.get("email").equals(receiverData[0]) &&
+                                        data.get("fullname").equals(receiverData[1]) &&
+                                        data.get("imageURL").equals(receiverData[2]) &&
+                                        data.get("phonenumber").equals(receiverData[3]) &&
+                                        data.get("username").equals(receiverData[4])
+                                        && data.get("venmo").equals(receiverData[5]))))
+                            return;
 
-                    }
-                });
-
-                DatabaseReference reference2 = reference1.getParent().child("Users").child(receiverUID[0]);
-                reference2.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Map <String, Object> data = (Map<String, Object>) dataSnapshot.child(receiverUID[0]).getValue();
                         Intent intent = new Intent(MessagePersonActivity.this, ProfileActivity.class);
                         intent.putExtra("username", data.get("username").toString());
                         intent.putExtra("fullname", data.get("fullname").toString());
@@ -133,7 +179,8 @@ public class MessagePersonActivity extends AppCompatActivity {
                         intent.putExtra("id", data.get("id").toString());
                         intent.putExtra("imageURL", data.get("imageURL").toString());
                         intent.putExtra("venmo", data.get("venmo").toString());
-                        startActivity(intent);
+                        startActivityForResult(intent, 1);
+                        clickedToolbar = true;
                     }
 
                     @Override
@@ -141,32 +188,32 @@ public class MessagePersonActivity extends AppCompatActivity {
 
                     }
                 });
-            }
-        });
 
-        fuser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
-        //CURRENTLY THIS CAUSES IT TO CRASH BECAUSE OF THE ID PROBLEM, WILL FIX LATER
+//                DatabaseReference reference2 = reference1.getRoot().child("Chats");
+//                //DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Chats");
+//                reference2.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        if (clickedToolbar[0])
+//                            return;
+//                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                            Chat chat = snapshot.getValue(Chat.class);
+//                            if (chat.getSender().equals(userid))
+//                                receiverUID[0] = chat.getSender();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                    }
+//                });
 
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                UserInformation user = dataSnapshot.getValue(UserInformation.class);
-                username.setText(user.getUsername());
-                if (user.getImageURL() == null || user.getImageURL().equals("Not provided")) { //had to change to null
-                    profile_image.setImageResource(R.drawable.default_user);
-                } else {
-                    Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
-                }
-
-                readMessages(fuser.getUid(), userid, user.getImageURL());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+
+
     }
 
     private void sendMessage(String sender, String receiver, String message) {
@@ -206,4 +253,14 @@ public class MessagePersonActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                clickedToolbar = false;
+                changeInDatabase = false;
+            }
+        }
+    }
 }
