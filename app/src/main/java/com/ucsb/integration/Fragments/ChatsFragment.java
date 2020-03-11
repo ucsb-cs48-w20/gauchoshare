@@ -24,6 +24,7 @@ import com.ucsb.integration.R;
 import com.ucsb.integration.adapter.UserAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -107,6 +108,7 @@ public class ChatsFragment extends Fragment {
                         }
                     }
                 }
+                Collections.sort(mUsers);
                 userAdapter = new UserAdapter(getContext(), mUsers);
                 recyclerView.setAdapter(userAdapter);
             }
