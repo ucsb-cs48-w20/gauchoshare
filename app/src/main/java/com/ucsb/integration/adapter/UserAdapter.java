@@ -39,11 +39,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final UserInformation user = mUsers.get(position);
         if (user.getUsername() != null)
-            holder.username.setText(user.getUsername()); //displays username
+            holder.username.setText(user.getUsername());
         else if (user.getEmail() != null)
-            holder.username.setText(user.getEmail()); //displays email if no username
+            holder.username.setText(user.getEmail());
 
-        if (user.getImageURL() == null || user.getImageURL().equals("Not provided")) { //testing to check for null
+        if (user.getImageURL() == null || user.getImageURL().equals("Not provided")) {
             holder.profile_image.setImageResource(R.drawable.default_user);
         } else {
             Glide.with(mContext).load(user.getImageURL()).into(holder.profile_image);

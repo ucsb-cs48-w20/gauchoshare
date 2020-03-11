@@ -2,7 +2,6 @@ package com.ucsb.integration.MainPage.Profile;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,7 +32,6 @@ public class ProfileActivity extends AppCompatActivity {
     String currentUserID;
     Map<String, Object> data;
     private ImageView mImageView;
-    private Uri mImageUri;
     private Button mEditProfile;
 
     boolean onProfile;
@@ -63,15 +61,10 @@ public class ProfileActivity extends AppCompatActivity {
         UsersRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (onProfile)
+                data = (Map<String, Object>) dataSnapshot.getValue();
+                if (!data.get("id").equals(currentUserID) || onProfile)
                     return;
                 onProfile = true;
-
-                data = (Map<String, Object>) dataSnapshot.getValue();
-
-                if (!data.get("id").equals(currentUserID))
-                    return;
-
                 userNameView.setText(getIntent().getStringExtra("username"));
                 fullNameView.setText(getIntent().getStringExtra("fullname"));
                 emailView.setText(getIntent().getStringExtra("email"));

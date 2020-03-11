@@ -53,8 +53,6 @@ public class MessagePersonActivity extends AppCompatActivity {
 
     Intent intent;
 
-    ValueEventListener seenListener;
-
     boolean clickedToolbar = false;
     boolean changeInDatabase;
 
@@ -64,13 +62,11 @@ public class MessagePersonActivity extends AppCompatActivity {
         setContentView(R.layout.activity_message_person);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("MessagePersonActivity");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //TRY MESSING WITH THIS LATER TO CHECK STUFF
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //and this is also changed to avoid crashing
                 startActivity(new Intent(MessagePersonActivity.this, MessageActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
@@ -108,8 +104,6 @@ public class MessagePersonActivity extends AppCompatActivity {
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
-        //.child(userid);
-        //CURRENTLY THIS CAUSES IT TO CRASH BECAUSE OF THE ID PROBLEM, WILL FIX LATER
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -124,14 +118,12 @@ public class MessagePersonActivity extends AppCompatActivity {
                     Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
                 }
 
-                if (!clickedToolbar) {
-                    receiverData[0] = user.getEmail();
-                    receiverData[1] = user.getFullname();
-                    receiverData[2] = user.getImageURL();
-                    receiverData[3] = user.getPhonenumber();
-                    receiverData[4] = user.getUsername();
-                    receiverData[5] = user.getVenmo();
-                }
+                receiverData[0] = user.getEmail();
+                receiverData[1] = user.getFullname();
+                receiverData[2] = user.getImageURL();
+                receiverData[3] = user.getPhonenumber();
+                receiverData[4] = user.getUsername();
+                receiverData[5] = user.getVenmo();
 
                 readMessages(fuser.getUid(), userid, user.getImageURL());
                 changeInDatabase = true;
@@ -147,9 +139,7 @@ public class MessagePersonActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 changeInDatabase = false;
-
                 DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("Users").child(userid);
-                //DatabaseReference reference2 = reference1.getParent().child("Users").child(receiverUID[0]);
                 reference1.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -159,7 +149,6 @@ public class MessagePersonActivity extends AppCompatActivity {
                             changeInDatabase = !changeInDatabase;
                             return;
                         }
-                        //Map <String, Object> data = (Map<String, Object>) dataSnapshot.child(receiverUID[0]).getValue();
                         Map <String, Object> data = (Map<String, Object>) dataSnapshot.getValue();
 
                         if (!userid.equals(fuser.getUid()) &&
@@ -188,32 +177,8 @@ public class MessagePersonActivity extends AppCompatActivity {
 
                     }
                 });
-
-//                DatabaseReference reference2 = reference1.getRoot().child("Chats");
-//                //DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Chats");
-//                reference2.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        if (clickedToolbar[0])
-//                            return;
-//                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                            Chat chat = snapshot.getValue(Chat.class);
-//                            if (chat.getSender().equals(userid))
-//                                receiverUID[0] = chat.getSender();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                    }
-//                });
-
-
             }
         });
-
-
     }
 
     private void sendMessage(String sender, String receiver, String message) {

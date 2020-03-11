@@ -43,10 +43,7 @@ public class MessageActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("MessageActivity"); //maybe change later to add title
-
-        //profile_image = findViewById(R.id.profile_image);
-        //username = findViewById(R.id.username);
+        getSupportActionBar().setTitle("MessageActivity");
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
@@ -54,16 +51,7 @@ public class MessageActivity extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //UserInformation user = dataSnapshot.getValue(UserInformation.class);
-                /*username.setText(user.getUsername());
-                username.setText("MessageActivity"); //change later CHANGE THE IMAGEURL TO STOP CRASHING
-                if (user.getImageUrl() == null || user.getImageUrl().equals("Not provided")) { //needed the null to stop crashing
-                    profile_image.setImageResource(R.mipmap.ic_launcher);
-                } else {
 
-                    //change this
-                    Glide.with(getApplicationContext()).load(user.getImageUrl()).into(profile_image);
-                }*/
             }
 
             @Override
@@ -84,24 +72,6 @@ public class MessageActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
     }
-
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.logout:
-                FirebaseAuth.getInstance().signOut();
-                //change this code because your app will crash
-                startActivity(new Intent(MainActivity.this, StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                return true;
-        }
-        return false;
-    } this is for the logout button i think*/
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
 
@@ -129,8 +99,6 @@ public class MessageActivity extends AppCompatActivity {
             fragments.add(fragment);
             titles.add(title);
         }
-
-        // Ctrl + O
 
         @Nullable
         @Override
