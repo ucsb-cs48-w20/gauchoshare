@@ -8,11 +8,12 @@ public class Product {
     private String price;
     private String title;
     private Boolean sold;
+    private String id;
 
     public Product() {
     }
 
-    public Product(String category, String createdBy, String description, String imageURL, String price, String title, Boolean sold) {
+    public Product(String category, String createdBy, String description, String imageURL, String price, String title, Boolean sold, String id) {
         this.category = category;
         this.createdBy = createdBy;
         this.description = description;
@@ -20,6 +21,7 @@ public class Product {
         this.price = price;
         this.title = title;
         this.sold = sold;
+        this.id = id;
     }
 
     public String getCategory() {
@@ -77,4 +79,8 @@ public class Product {
     public void setSold(Boolean sold) {
         this.sold = sold;
     }
+
+    public String getId() { return id; }
+
+    public void setId(String id) { this.id = id; }
 }

@@ -22,6 +22,7 @@ import com.squareup.picasso.Picasso;
 import com.ucsb.integration.MainPage.Message.MessagePersonActivity;
 import com.ucsb.integration.MainPage.Profile.CircleTransform;
 import com.ucsb.integration.MainPage.Profile.ProfileActivity;
+import com.ucsb.integration.MainPage.Share.EditListing;
 import com.ucsb.integration.R;
 
 import java.util.Map;
@@ -40,7 +41,7 @@ public class ViewListingActivity extends AppCompatActivity {
 
     private Button MessageSellerButton;
 
-    private String userID, currentUserID, title, price, description, listingImageURL, profileImageURL, name;
+    private String userID, currentUserID, title, price, description, listingImageURL, profileImageURL, name, category, listingID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,8 @@ public class ViewListingActivity extends AppCompatActivity {
         price = extras.getString("price");
         description = extras.getString("description");
         listingImageURL = extras.getString("listingImageURL");
+        category = extras.getString("category");
+        listingID = extras.getString("listingID");
 
         MessageSellerButton = findViewById(R.id.button_message_seller);
 
@@ -66,9 +69,9 @@ public class ViewListingActivity extends AppCompatActivity {
         currentUserID = mAuth.getCurrentUser().getUid();
 
         if (currentUserID.equals(userID)) {
-            MessageSellerButton.setVisibility(View.INVISIBLE);
+            MessageSellerButton.setText("Edit Listing");
         } else {
-            MessageSellerButton.setVisibility(View.VISIBLE);
+            MessageSellerButton.setText("Contact Seller");
         }
 
         ProfileImageView = findViewById(R.id.listing_creator_picture);
@@ -115,8 +118,19 @@ public class ViewListingActivity extends AppCompatActivity {
         MessageSellerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ViewListingActivity.this, MessagePersonActivity.class);
-                intent.putExtra("userid", userID);
+                Intent intent;
+                if (MessageSellerButton.getText().toString().equals("Edit Listing")) {
+                    intent = new Intent(ViewListingActivity.this, EditListing.class);
+                    intent.putExtra("title", title);
+                    intent.putExtra("price", price);
+                    intent.putExtra("description", description);
+                    intent.putExtra("category", category);
+                    intent.putExtra("listingImageURL", listingImageURL);
+                    intent.putExtra("listingID", listingID);
+                } else {
+                    intent = new Intent(ViewListingActivity.this, MessagePersonActivity.class);
+                    intent.putExtra("userid", userID);
+                }
                 startActivity(intent);
                 finish();
             }
