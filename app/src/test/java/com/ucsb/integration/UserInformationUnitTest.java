@@ -91,4 +91,64 @@ public class UserInformationUnitTest {
         userInformation.setVenmo("testVenmo");
         assertEquals("testVenmo", userInformation.getVenmo());
     }
+
+    @Test
+    public void test_compareTo1() {
+        UserInformation user1 = new UserInformation();
+        UserInformation user2 = new UserInformation();
+        user1.setUsername("Kyle");
+        user2.setUsername("Robert");
+        int compare = user1.compareTo(user2);
+        if (compare < 0) compare = -1;
+        if (compare > 0) compare = 1;
+        assertEquals(-1, compare);
+    }
+
+    @Test
+    public void test_compareTo2() {
+        UserInformation user1 = new UserInformation();
+        UserInformation user2 = new UserInformation();
+        user1.setUsername("Kyle");
+        user2.setUsername("robert");
+        int compare = user1.compareTo(user2);
+        if (compare < 0) compare = -1;
+        if (compare > 0) compare = 1;
+        assertEquals(-1, compare);
+    }
+
+    @Test
+    public void test_compareTo3() {
+        UserInformation user1 = new UserInformation();
+        UserInformation user2 = new UserInformation();
+        user1.setUsername("Robert");
+        user2.setUsername("Kyle");
+        int compare = user1.compareTo(user2);
+        if (compare < 0) compare = -1;
+        if (compare > 0) compare = 1;
+        assertEquals(1, compare);
+    }
+
+    @Test
+    public void test_compareTo4() {
+        UserInformation user1 = new UserInformation();
+        UserInformation user2 = new UserInformation();
+        user1.setUsername("Robert");
+        user2.setUsername(null);
+        int compare = user1.compareTo(user2);
+        if (compare < 0) compare = -1;
+        if (compare > 0) compare = 1;
+        assertEquals(1, compare);
+    }
+
+    @Test
+    public void test_compareTo5() {
+        UserInformation user1 = new UserInformation();
+        UserInformation user2 = new UserInformation();
+        user1.setUsername(null);
+        user2.setUsername("Robert");
+        int compare = user1.compareTo(user2);
+        if (compare < 0) compare = -1;
+        if (compare > 0) compare = 1;
+        assertEquals(-1, compare);
+    }
 }
