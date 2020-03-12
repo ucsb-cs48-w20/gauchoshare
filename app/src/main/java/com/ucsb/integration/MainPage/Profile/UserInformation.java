@@ -65,8 +65,10 @@ public class UserInformation implements Comparable<UserInformation> {
 
     @Override
     public int compareTo(UserInformation user) {
-        if (this.getUsername() == null || user.getUsername() == null)
+        if (this.getUsername() == null)
             return -1;
+        if (user.getUsername() == null)
+            return 1;
         return this.getUsername().toLowerCase().compareTo(user.getUsername().toLowerCase());
     }
 }
