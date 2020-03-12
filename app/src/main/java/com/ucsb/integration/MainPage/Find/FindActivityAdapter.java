@@ -42,13 +42,13 @@ public class FindActivityAdapter extends RecyclerView.Adapter<FindActivityAdapte
     public void onBindViewHolder(@NonNull Holderview holder, final int position) {
         holder.v_name.setText(proList.get(position).getTitle());
         holder.v_price.setText((proList.get(position).getPrice()));
-        if (proList.get(position).getImageURL().equals("Not provided")) {
+        if (proList.get(position).getImageURL() == null || proList.get(position).getImageURL().equals("Not provided")) {
             Picasso.get().load(R.drawable.default_listing).fit().into(holder.v_image);
         } else {
             Picasso.get().load(proList.get(position).getImageURL()).into(holder.v_image);
         }
 
-        if (!proList.get(position).getSold()) {
+        if (proList.get(position).getSold() == null || !proList.get(position).getSold()) {
             holder.v_sold.setVisibility(View.INVISIBLE);
             holder.itemView.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View view){

@@ -77,7 +77,7 @@ public class ViewListingActivity extends AppCompatActivity {
         ProfileImageView = findViewById(R.id.listing_creator_picture);
         ListingImageView = findViewById(R.id.listing_image_view);
 
-        if (listingImageURL.equals("Not provided")) {
+        if (listingImageURL == null || listingImageURL.equals("Not provided")) {
             Picasso.get().load(R.drawable.default_listing).fit().into(ListingImageView);
         } else {
             Picasso.get().load(listingImageURL).fit().into(ListingImageView);
