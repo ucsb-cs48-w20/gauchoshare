@@ -23,7 +23,7 @@ UCSB students are cheap and do not want to have to buy extra, overpriced materia
 
 ### Dependencies
 
-Dependencies are specified in the build.gradle files and will be installed automatically when building the Android app.
+Dependencies are specified in the build.gradle files and will be installed automatically when building the Android app. Manual installation of each individual dependency is not required.
 
 ### Installation Steps
 1. Install gradle CLI
@@ -50,14 +50,18 @@ gradlew build
 ## Functionality
 
 * App allows user to create profile with contact information that might be relevant to the seller/buyer
-* User can create a listing that includes the name of the item they are selling, the price they are selling it at, and any other additional description/details
-* User can view listings created by other Users and directly message them through the app, or contact them through their social media
+* User can create a listing that includes the name of the item they are selling, the price they are selling it at, an image of the item they are selling, and any other additional description/details
+* User can view listings created by other users and directly message them through the app, or contact them through the each other's provided contact information
 * User can also mark certain postings as SOLD in order to inform potential buyers that the item has already been bought
+* User can view all the listings they have created and edit any information related to it (e.g. title, price, description, category, image)
+* User can edit profile information (e.g. name, phone number, Venmo, username, profile picture)
+* User can search through all listings by keywords contained in listing titles or description
 
 ## Known Problems
 
-* Search functionality only works when User searches the EXACT keywords of the item they are looking for
-* Profile image upload does not crop to fit the ImageView provided
+* Image upload does not work if user immediately saves their profile/listing information
+* Profile/listing image display does not always immediately display due to the retrieval time it takes to get the image from Firebase Storage
+* When running on an emulator, the very first authentication action can often take a while, but this is likely due to an inherent issue with emulators
 
 
 ## Contributing
