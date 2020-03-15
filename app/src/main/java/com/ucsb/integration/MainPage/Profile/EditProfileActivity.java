@@ -69,6 +69,7 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+        getSupportActionBar().hide();
 
         mButtonChooseImage = findViewById(R.id.edit_choose_image);
         mButtonCancel = findViewById(R.id.edit_cancel);
